@@ -124,7 +124,7 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   
   if ( naming == "TAGS") {
     
-    channel_obj$created <- lubridate::dmy_hms(channel_allertameteoTOS$time)
+    channel_obj$created <- lubridate::dmy_hms(channel_obj$time)
     channel_obj=channel_obj[which(!is.na(channel_obj$created)),]
     channel_obj$data <- as.Date(channel_obj$created)
     channel_obj$screeName=channel_obj$from_user
