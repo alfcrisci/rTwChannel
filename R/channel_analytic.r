@@ -184,7 +184,8 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
     channel_obj$data=as.Date(channel_obj$created)
     channel_obj$hour=lubridate::hour(channel_obj$created)
     channel_obj$month=lubridate::month(channel_obj$created)
-    
+    channel_obj$text=iconv(all_tweets$text,"utf-8")
+    channel_obj$isRetweet=as.integer(all_tweets$isRetweet)
   }
   
   
@@ -212,6 +213,7 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   # Create data.frames for other count statistics.
   
   ls_retweet=unlist(lapply(channel_obj$text,FUN=function(x) is.retweet(x)))
+  ls_retweeted_authors=as.character(rep(NA,nrow(channel_obj)))
   ls_retweeted_authors=sapply(channel_obj$text,FUN=function(x) retweeted_users(x));
   
   if (only_original_tweet==TRUE) { channel_obj=channel_obj[which(ls_retweet==0),]
