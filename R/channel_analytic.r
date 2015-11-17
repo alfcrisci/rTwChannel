@@ -214,8 +214,9 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   
   ls_retweet=unlist(lapply(channel_obj$text,FUN=function(x) is.retweet(x)))
   ls_retweeted_authors=as.character(rep(NA,nrow(channel_obj)))
-  ls_retweeted_authors=sapply(channel_obj$text,FUN=function(x) retweeted_users(x));
-  
+  for ( i in 1:length(ls_retweeted_authors)) {ls_retweeted_authors[i]=retweeted_users(all_tweets$text[i]) }
+ 
+ 
   if (only_original_tweet==TRUE) { channel_obj=channel_obj[which(ls_retweet==0),]
                                    ls_retweet=unlist(lapply(channel_obj$text,FUN=function(x) is.retweet(x)))
                                  }
