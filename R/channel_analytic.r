@@ -186,6 +186,8 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
     channel_obj$month=lubridate::month(channel_obj$created)
     channel_obj$text=iconv(all_tweets$text,"utf-8")
     channel_obj$isRetweet=as.integer(all_tweets$isRetweet)
+    channel_obj$screeName=channel_obj$screenName
+    channel_obj$screenName<-NULL
   }
   
   
