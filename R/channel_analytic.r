@@ -212,6 +212,7 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   # Create data.frames for other count statistics.
   
   ls_retweet=unlist(lapply(channel_obj$text,FUN=function(x) is.retweet(x)))
+  ls_retweeted_authors=sapply(channel_obj$text,FUN=function(x) retweeted_users(x));
   
   if (only_original_tweet==TRUE) { channel_obj=channel_obj[which(ls_retweet==0),]
                                    ls_retweet=unlist(lapply(channel_obj$text,FUN=function(x) is.retweet(x)))
@@ -222,7 +223,6 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   # Create lists to be used for count statistics.
   ls_links=lapply(channel_obj$text,FUN=function(x) qdapRegex::rm_url(x, extract=TRUE))
   
-  ls_retweeted_authors=sapply(channel_obj$text,FUN=function(x) retweeted_users(x));
   
  
   if ( lowercase == TRUE) {
