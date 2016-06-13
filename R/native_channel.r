@@ -2,7 +2,7 @@
 #'
 #' @description extract a channel object only with original tweet 
 #'
-#' @param  channel  data.frame  channel object
+#' @param  channel_obj  data.frame  channel object
 #' @param  naming  character  stream data.frame type
 #' @return channel_obj data.frame Return a data.frame 
 #' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
@@ -14,7 +14,7 @@
 #'
 #'
 
-native_channel = function(channel,naming="DISIT") {
+native_channel = function(channel_obj,naming="DISIT") {
 
     if ( naming == "TAGS") {
     
