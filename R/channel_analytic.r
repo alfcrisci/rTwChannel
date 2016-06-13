@@ -262,11 +262,11 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   ####################################################################################
   # Replies stats
   
-  fullretweet_day=aggregate(channel_obj$retweetCount[which(!duplicated(channel_obj$text)==TRUE)],list(channel_obj$data[which(!duplicated(channel_obj$text)==TRUE)]),sum,na.rm = TRUE)
+  fullretweet_day=aggregate(channel_obj$retweetCount[which(!duplicated(channel_obj$text)==TRUE)],list(channel_obj$data[which(!duplicated(channel_obj$text)==TRUE)]),length,na.rm = TRUE)
   names(fullretweet_day)=c("date","retweetCount")
   fullretweet_day$date=as.Date(fullretweet_day$date)
   
-  fullreplies_day=aggregate(channel_obj$replies,list(channel_obj$data),sum,na.rm = TRUE)
+  fullreplies_day=aggregate(channel_obj$replies,list(channel_obj$data),length,na.rm = TRUE)
   names(fullreplies_day)=c("date","repliesCount")
   fullreplies_day$date=as.Date(fullreplies_day$date)
   
@@ -308,12 +308,12 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
                           retweetCount=channel_obj$retweetCount[which(!duplicated(channel_obj$text)==TRUE)],
                           is.retweet=ls_retweet[which(!duplicated(channel_obj$text)==TRUE)])
   
-  rank_authors_retweet=aggregate(ls_message_df$retweetCount,list(ls_message_df$authors),length)
+  rank_authors_retweet=aggregate(ls_message_df$retweetCount,list(ls_message_df$authors),sum)
   rank_authors=rank_authors_retweet[order(-rank_authors_retweet[,2]),]
   names(rank_authors_retweet)<-c("authors","retweetCount")
   
   
-  rank_message_retweet=aggregate(ls_message_df$retweetCount,list(ls_message_df$message),length)
+  rank_message_retweet=aggregate(ls_message_df$retweetCount,list(ls_message_df$message),sum)
   rank_message_retweet=rank_message_retweet[order(-rank_message_retweet[,2]),]
   names(rank_message_retweet)<-c("message","retweetCount")
   
