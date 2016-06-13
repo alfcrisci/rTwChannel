@@ -71,7 +71,7 @@ native_channel = function(channel_obj,naming="DISIT") {
     channel_obj$screenName<-NULL
   }
 
-  ls_retweet = unlist(lapply(channel$text,FUN=function(x) is.retweet(x)))
-  channel_obj = channel[which(ls_retweet==FALSE),]
+  ls_retweet = unlist(lapply(channel_obj$text,FUN=function(x) is.retweet(x)))
+  channel_obj = channel_obj[which(ls_retweet==FALSE),]
   return(channel_obj)
 }
