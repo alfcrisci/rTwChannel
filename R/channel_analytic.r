@@ -107,6 +107,16 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   
   rows=nrow(channel_obj)
   
+  message(paste(" Channel:", deparse(substitute(channel_obj)),"\n",
+                "Elements:", rows ,"\n", 
+                "Ntop:", Ntop  ,"\n",
+                "Temporal Check:",temporal_check,"\n",
+                "Minimum data:",Nmin,"\n",
+                "Type stream:",naming,"\n",
+                "Native Channel:",only_original_tweet,"\n",
+                "Lowering case message's text:",lowercase,"\n"))
+ 
+  
   if (rows < Nmin) { stop("Channel with too few records.")};
   
  
@@ -213,15 +223,7 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   #####################################################################################
   # Dump feature streams
  
-   message(paste(" Channel:", deparse(substitute(channel_obj)),"\n",
-                "Elements:", rows ,"\n", 
-                "Ntop:", Ntop  ,"\n",
-                "Temporal Check:",temporal_check,"\n",
-                "Minimum data:",Nmin,"\n",
-                "Type stream:",naming,"\n",
-                "Native Channel:",only_original_tweet,"\n",
-                "Lowering case message's text:",lowercase,"\n"))
-  
+   
   #####################################################################################
   # recape on retweet in case of purging retweets
  
