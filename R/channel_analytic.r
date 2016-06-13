@@ -266,7 +266,7 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   names(fullretweet_day)=c("date","retweetCount")
   fullretweet_day$date=as.Date(fullretweet_day$date)
   
-  fullreplies_day=aggregate(as.numeric(channel_obj$replies,list(channel_obj$data)),sum,na.rm = TRUE)
+  fullreplies_day=aggregate(as.numeric(channel_obj$replies),list(channel_obj$data),sum,na.rm = TRUE)
   names(fullreplies_day)=c("date","repliesCount")
   fullreplies_day$date=as.Date(fullreplies_day$date)
   
