@@ -226,7 +226,7 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   
    ####################################################################################
   # Create lists to be used for count statistics.
-  ls_links=lapply(channel_obj$text,FUN=function(x) qdapRegex::rm_url(x, extract=TRUE))
+  ls_links=lapply(channel_obj$text,function(x) qdapRegex::rm_url(x, extract=TRUE))
   
   
  
@@ -524,7 +524,7 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   table_message$authors=NA
   
   
-  ind=sapply(table_message$message,FUN=function(x) match(x,channel_obj$text))
+  ind=sapply(table_message$message,function(x) match(x,channel_obj$text))
   
   for ( i in 1:length(ind)) {
     table_message$data[i]=as.character(channel_obj$data[ind[i]])
