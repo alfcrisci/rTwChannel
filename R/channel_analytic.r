@@ -109,15 +109,7 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   
   if (rows < Nmin) { stop("Channel with too few records.")};
   
-  message(paste(" Channel:", deparse(substitute(channel_obj)),"\n",
-                "Elements:", rows ,"\n", 
-                "Ntop:", Ntop  ,"\n",
-                "Temporal Check:",temporal_check,"\n",
-                "Minimum data:",Nmin,"\n",
-                "Type stream:",naming,"\n",
-                "Native Channel:",only_original_tweet,"\n",
-                "Lowering case message's text:",lowercase,"\n"))
-  
+ 
   if ( naming == "account_analitics")  {message(paste("Account Twitter:",account_tw,"\n"))}
   
   if ( (naming == "account_analitics") &&   (account_tw == "") ) { stop("Channel analitics need an Twitter account!")};
@@ -218,17 +210,30 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
  
   if (only_original_tweet==TRUE) { channel_obj=channel_obj[which(ls_retweet==0),]  }
   
+  #####################################################################################
+  # Dump feature streams
+ 
+   message(paste(" Channel:", deparse(substitute(channel_obj)),"\n",
+                "Elements:", rows ,"\n", 
+                "Ntop:", Ntop  ,"\n",
+                "Temporal Check:",temporal_check,"\n",
+                "Minimum data:",Nmin,"\n",
+                "Type stream:",naming,"\n",
+                "Native Channel:",only_original_tweet,"\n",
+                "Lowering case message's text:",lowercase,"\n"))
+  
+  #####################################################################################
+  # recape on retweet in case of purging retweets
+ 
+  
   ls_retweet=unlist(lapply(channel_obj$text,FUN=function(x) is.retweet(x)))
   
   ls_retweeted_authors=as.character(rep(NA,nrow(channel_obj)))
   for ( i in 1:length(ls_retweeted_authors)) {ls_retweeted_authors[i]=retweeted_users(channel_obj$text[i]) }
- 
- 
-                                 
   
-  
-   ####################################################################################
+  ####################################################################################
   # Create lists to be used for count statistics.
+  
   ls_links=lapply(channel_obj$text,function(x) qdapRegex::rm_url(x, extract=TRUE))
   
   
