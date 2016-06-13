@@ -271,7 +271,7 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   fullreplies_day$date=as.Date(fullreplies_day$date)
   
   fullretweet_missing=length(which(is.na(channel_obj$retweetCount[which(!duplicated(channel_obj$text)==TRUE)])))
-  fullretweet_channel_stat_sum=sum(channel_obj$retweetCount[which(!duplicated(channel_obj$text)==TRUE)],na.rm=T)
+  fullretweet_channel_stat_sum=sum(as.numeric(channel_obj$retweetCount[which(!duplicated(channel_obj$text)==TRUE)]),na.rm=T)
   replies_channel_stat_sum=length(replies_id)
   
   
@@ -293,7 +293,7 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   ls_favorite_df=ls_favorite_df[order(-as.numeric(ls_favorite_df$favoriteCount)),]
   
   
-  rank_authors_favorite=aggregate(channel_obj$favoriteCount[which(!duplicated(channel_obj$text)==TRUE)],
+  rank_authors_favorite=aggregate(as.numeric(channel_obj$favoriteCount[which(!duplicated(channel_obj$text)==TRUE)]),
                                   list(channel_obj$screeName[which(!duplicated(channel_obj$text)==TRUE)])
                                   ,sum)
   rank_authors_favorite=rank_authors_favorite[order(-rank_authors_favorite[,2]),]
