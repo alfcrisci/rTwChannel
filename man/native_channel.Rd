@@ -8,6 +8,8 @@ native_channel(channel)
 }
 \arguments{
 \item{channel}{data.frame  channel object}
+\item{naming}{character  stream data.frame type}
+
 }
 \value{
 channel_obj data.frame Return a data.frame
