@@ -98,7 +98,7 @@
 
 channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, end_date=NULL,Ntop=11,temporal_check=FALSE,
                           Nmin=25,naming="",only_original_tweet=FALSE,lowercase=TRUE,stopword = tm::stopwords("it"), 
-                          corpus_hashtag=TRUE,account_tw="",graph_analisys=TRUE,corpus_analisys=TRUE) 
+                          account_tw="",corpus_hashtag=TRUE,graph_analisys=TRUE,corpus_analisys=TRUE) 
                           
                           {
   
