@@ -667,7 +667,7 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   corpus=NULL
   word_freq_matr=NULL
   
-  if ( graph_analisys==TRUE} {
+  if ( graph_analisys==TRUE) {
   
   ############################################################################################################
   # Create a mention graph
