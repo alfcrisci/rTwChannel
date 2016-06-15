@@ -13,8 +13,10 @@
 #' @param  only_original_tweet Logical Taking into account only original. Default all tweets are considered.
 #' @param  lowercase logical Consider  all text as lower case. Default is TRUE.
 #' @param  stopword Character stopword set to be use to calculate word frequency matrix. Default italian stopwords of R tm package.
-#' @param  corpus_hashtag logical Corpus not taking into account the hashtag.
-#' @param  account_tw User account if naming parameter is an "account_statistics"
+#' @param  corpus_hashtag logical Corpus analisys not considering the hashtag.
+#' @param  account_tw User account if naming parameter is an "account_statistics".
+#' @param  graph_analisys Graph analisys done. default is TRUE.
+#' @param  corpus_analisys Corpora analisys done. default is TRUE.
 #' @return Return a R list object  for channel analisys
 #' @return **channel_stat** : channel summaries of following parameters.
 #' @return *        *N_tweets* : Number of tweet within unique ID
@@ -95,8 +97,8 @@
 #'
 
 channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, end_date=NULL,Ntop=11,temporal_check=FALSE,
-                          Nmin=25,naming="",only_original_tweet=FALSE,lowercase=TRUE,stopword = tm::stopwords("it"),
-                          account_tw="", corpus_hashtag=TRUE) 
+                          Nmin=25,naming="",only_original_tweet=FALSE,lowercase=TRUE,stopword = tm::stopwords("it"), 
+                          corpus_hashtag=TRUE,account_tw="",graph_analisys=TRUE,corpus_analisys=TRUE) 
                           
                           {
   
@@ -660,21 +662,28 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   message("Full stats of channel are done!\n")
   
   
+   rt_graph=NULL
+  men_graph=NULL
+  corpus=NULL
+  word_freq_matr=NULL
+  
+  if ( graph_analisys==TRUE} {
+  
   ############################################################################################################
   # Create a mention graph
-  
+ 
   graph_mentions_df=na.omit(ls_tag_df)
   mat_men_graph=na.omit(data.frame(whopost=graph_mentions_df[,4],whomentioned=graph_mentions_df[,2]))
   men_graph = igraph::graph.edgelist(as.matrix(na.omit(mat_men_graph)))
   E(men_graph )$weight <- 1
   men_graph <- igraph::simplify(men_graph, remove.loops=FALSE)
  
-   message("Mention Graph of channel are done!\n")
+  message("Mention Graph of channel are done!\n")
   
   ############################################################################################################
   # Create a retweet graph
   
-  rt_graph=NULL
+  
   
   if (naming!="account_statistics") 
   { 
@@ -684,13 +693,16 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
           message("Retweet  Graph of channel are done!\n")
           
   }
+  }
   
   ############################################################################################################
   # Get corpus and termdocfrequency matrix as qdap object
-  
+  if ( corpus_analisys==TRUE) {
   corpus=getCorpus(channel_obj$text,hashtag=corpus_hashtag)
   word_freq_matr=qdap::wfm(corpus,stopwords=stopword)
   message("Corpus of words and frequency qdap matrix  of channel are done!\n")
+  }
+  
   
   ########################################################################################
   
