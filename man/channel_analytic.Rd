@@ -7,7 +7,7 @@
 channel_analytic(channel_obj, use_channel_dates = TRUE, start_date, end_date,
   Ntop = 11, temporal_check = FALSE, Nmin = 25, naming = "", lowercase=TRUE,
   only_original_tweet = FALSE, stopword = tm::stopwords("it"),
-  account_tw = "", corpus_hashtag = TRUE)
+  account_tw = "", corpus_hashtag = TRUE,graph_analisys=TRUE,corpus_analisys=TRUE)
 }
 \arguments{
 \item{channel_obj}{Data.frame Dataset of tweets}
