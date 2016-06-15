@@ -34,7 +34,14 @@ channel_analytic(channel_obj, use_channel_dates = TRUE, start_date, end_date,
 
 \item{account_tw}{User account if naming parameter is an "account_statistics"}
 
-\item{corpus_hashtag}{logical Corpus not taking into account the hashtag.}
+\item{corpus_hashtag}{logical Corpus not considering the hashtag.}
+
+\item{graph_analisys}{logical Graph analisys done. Default is TRUE.}
+
+\item{corpus_analisys}{logical Corpus analisys done. Default is TRUE.}
+
+
+
 }
 \value{
 Return a R list object  for channel analisys
