@@ -647,7 +647,7 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
                        Nfull_retweet=fullretweet_channel_stat_sum,
                        Nfull_retweet_missing=fullretweet_missing,
                        Nreplies=replies_channel_stat_sum,
-                       Nfavor=sum(ls_favorite_df$N_favor,na.rm=T),
+                       Nfavor=sumsum(day_favorite$N_favor,na.rm=T),
                        Ntweets0hashs = length(which(ls_lenhash==0)),
                        Ntweets1hashs = length(which(ls_lenhash==1)),
                        NtweetsNhashs = length(which(ls_lenhash>1)),
