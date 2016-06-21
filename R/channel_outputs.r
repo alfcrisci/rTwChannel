@@ -67,7 +67,7 @@ channel_outputs=function(stat_obj, param="channel_stat", suffix_file="LIG", na_s
   if (param=="daily_stat") { res[,6:8]=round(res[,6:8],1) }
   
   if ( filecsv == TRUE) {
-    write.csv(res,paste0(param,"_",suffix_file,".csv"),na=na_string,row.names = F)
+    write.csv(res,paste0(suffix_file,"_",param,".csv"),na=na_string,row.names = F)
     
   }
   
@@ -79,7 +79,7 @@ channel_outputs=function(stat_obj, param="channel_stat", suffix_file="LIG", na_s
   
   if ( excel == TRUE) {
     
-    XLConnect::writeWorksheetToFile(paste0(param,"_",suffix_file,".xls"), res, sheet=paste0(param,"_",suffix_file))
+    XLConnect::writeWorksheetToFile(paste0(suffix_file,"_",param,".xls"), res, sheet=paste0(suffix_file))
     
   }
   
