@@ -152,7 +152,7 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   if ( naming == "DISIT") {
     
     channel_obj$text=channel_obj$message
-    channel_obj$data=as.character(as.Date(channel_obj$publicationTime))
+    channel_obj$data=as.character(as.Date(lubridate::ymd_yms(channel_obj$publicationTime)))
     channel_obj$screeName=channel_obj$twitterUser
     channel_obj$created=channel_obj$publicationTime
     channel_obj$ls_hash_full=channel_obj$hashtagsOnTwitter
@@ -162,10 +162,9 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
     channel_obj$hashtagsOnTwitter<-NULL
     channel_obj$twitterId<-NULL
     channel_obj$links<-NULL
-    channel_obj$hour=lubridate::hour(channel_obj$publicationTime)
-    channel_obj$month=lubridate::month(channel_obj$publicationTime)
-    channel_obj$publicationTime<-NULL
-  
+    channel_obj$hour=lubridate::hour(lubridate::ymd_yms(channel_obj$publicationTime))
+    channel_obj$month=lubridate::month(lubridate::ymd_yms(channel_obj$publicationTime))
+   
   }
   
   if (naming == "account_analitics")
