@@ -52,10 +52,9 @@ native_channel = function(channel_obj,naming="DISIT") {
     channel_obj$hashtagsOnTwitter<-NULL
     channel_obj$twitterId<-NULL
     channel_obj$links<-NULL
-    channel_obj$hour=lubridate::hour(channel_obj$publicationTime)
-    channel_obj$month=lubridate::month(channel_obj$publicationTime)
-    channel_obj$publicationTime<-NULL
-  
+    channel_obj$hour=lubridate::hour(lubridate::yms_hms(channel_obj$publicationTime))
+    channel_obj$month=lubridate::month(lubridate::dmy_hms(channel_obj$publicationTime))
+    
   }
   
   
