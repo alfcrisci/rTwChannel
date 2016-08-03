@@ -271,9 +271,9 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   #########################################################################
   # Create daily channel stats
   
-  channel_stats=fastChannelstat(channel_obj,stream="DISIT")
+  channel_stats=fastChannelstat(channel_obj,stream=naming)
   
-  daily_stat=daily_channel_stat(channel_obj,stream="DISIT")
+  daily_stat=daily_channel_stat(channel_obj,stream=naming)
   
   message("Daily stats calculated!\n")
   
