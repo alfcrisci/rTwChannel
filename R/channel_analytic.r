@@ -132,8 +132,8 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
     channel_obj$class_hashtag=NA
     channel_obj$class_message=NA
     channel_obj$class_custom=NA
-    channel_obj$geo_lat=channel_obj$latitude
-    channel_obj$geo_long=channel_obj$longitude
+    channel_obj$geo_lat=as.numeric(channel_obj$latitude)
+    channel_obj$geo_long=as.numeric(channel_obj$longitude)
     
   }
   
@@ -154,8 +154,6 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
     channel_obj$class_hashtag=NA
     channel_obj$class_message=NA
     channel_obj$class_custom=NA
-    channel_obj$geo_lat[which(channel_obj$geo_lat==0)]=NA
-    channel_obj$geo_long[which(channel_obj$geo_long==0)]=NA
     
   }
   
@@ -179,8 +177,8 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
     channel_obj$class_hashtag=NA
     channel_obj$class_message=NA
     channel_obj$class_custom=NA
-    channel_obj$geo_lat=channel_obj$latitude
-    channel_obj$geo_long=channel_obj$longitude
+    channel_obj$geo_lat=as.numeric(channel_obj$latitude)
+    channel_obj$geo_long=as.numeric(channel_obj$longitude)
     
   }
   
