@@ -1,13 +1,28 @@
 Package: rTwChannel
 Type: Package
 Title: Twitter channel stream analitics
-Version: 0.1
-Date: 2015-09-07
-Author: Alfonso Crisci <a.crisci@ibimet.cnr.it>, Valentina Grasso <v.grasso@ibimet.cnr.it>
+Version: 0.2
+Date: 2016-08-04
+Author: Alfonso Crisci <a.crisci@ibimet.cnr.it>, Valentina Grasso
+    <v.grasso@ibimet.cnr.it>
 Maintainer: Alfonso Crisci <a.crisci@ibimet.cnr.it>
-Description: This package performs analitics on Twitter datastreams obtained by a structured query by using Twitter search/streaming API. The form of data are frames of data where significant elements of tweets are reported.
-Imports: curl, qdap, qdapRegex, qdapTools, igraph, tm, sjPlot, sjmisc, XLConnect, stringr,lubridate
-Suggests: wordcloud
+Description: This package performs analitics on Twitter datastreams obtained by
+    a structured query by using Twitter search/streaming API. The form of data are
+    frames of data where significant elements of tweets are reported.
+Imports:
+    curl,
+    qdap,
+    qdapRegex,
+    qdapTools,
+    igraph,
+    tm,
+    sjPlot,
+    sjmisc,
+    XLConnect,
+    stringr,
+    lubridate
+Suggests:
+    wordcloud
 License: GPL-2
 NeedsCompilation: no
-
+RoxygenNote: 5.0.1
