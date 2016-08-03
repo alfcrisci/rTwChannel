@@ -67,9 +67,10 @@ fastChannelstat<-function(x,check_duplicates=FALSE,stream="")
   }
   
   if ( length(grep("geo_lat",names(x)))==0) {  x$geo_lat=NA;
-                                           x$geo_long=NA;}
+                                               x$geo_long=NA;}
             
     
+  geo_lat=ifelse(x$geo_lat==0,NA,x$geo_lat)
   
   if (check_duplicates==T) {x=x[which(duplicated(x$id)==F),]}
   name_one=c("RTW_TW","TW","RTW","ini_date_full","end_date_full","ratioRTW_TW","activity_days","activity_days_native","TW_daily","period_extent","relative_activity","RTW_TW_daily","retweetCount","favoriteCount","N_native_users","U_native_users","N_native_hashtag","U_native_hashtag","N_native_mentions",
@@ -127,7 +128,7 @@ fastChannelstat<-function(x,check_duplicates=FALSE,stream="")
                     res_df$most_favorited=x$text
                     res_df$N_favor_full=ifelse(x$favoriteCount>0,1,0);
                     res_df$Nfavor_native=ifelse(x$isRetweet==1,0,res_df$N_favor_full)
-                    res$N_geo=length(which(!is.na(x$geo_lat)))
+                    res$N_geo=x$geo_lat
                     return(res_df[name_one])
                     
                     }
@@ -236,7 +237,7 @@ fastChannelstat<-function(x,check_duplicates=FALSE,stream="")
   res_df$most_retweeted=try(paste(ind_retweeted_sum$Group.1[which(ind_retweeted_sum$x== max(ind_retweeted_sum$x))],collapse = " "))
   res_df$most_favorited=paste(ind_favorited_sum$Group.1[which(ind_favorited_sum$x== max(ind_favorited_sum$x))],collapse = " ")
   
-  res$N_geo=length(which(!is.na(x$geo_lat)))
+  res$N_geo=length(which(!is.na(geo_lat)))
   
   return(res_df[name_one])
 
