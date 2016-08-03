@@ -90,7 +90,6 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   message(paste("Channel:", deparse(substitute(channel_obj)),"\n",
                 "Elements:", rows ,"\n", 
                 "Ntop:", Ntop  ,"\n",
-                "Temporal Check:",temporal_check,"\n",
                 "Minimum data:",Nmin,"\n",
                 "Type stream:",naming,"\n",
                 "Native Channel:",only_original_tweet,"\n",
