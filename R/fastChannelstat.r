@@ -83,7 +83,8 @@ fastChannelstat<-function(x,check_duplicates=FALSE,stream="")
                      TW=NA,
                      RTW=NA,
                      ini_date_full=NA,
-                     end_date_full=NA
+                     end_date_full=NA,
+                     geo_lat=NA
                    )
   
   if (nrow(x)==1) {                res_df$RTW_TW=1;
