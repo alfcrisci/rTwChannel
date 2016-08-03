@@ -14,7 +14,7 @@
 #'
 #'
 #'
-daily_channel_stat=function(x,check_duplicates=T,stream="") 
+daily_channel_stat=function(x,check_duplicates=T,stream="DISIT") 
   { res_d=list();
     datetemp=unique(x$date);
 
