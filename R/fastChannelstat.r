@@ -46,7 +46,6 @@
 #' @return most_favorited Character 
 #' @return N_favor_full Numeric Number of original tweets favorite.
 #' @return Nfavor_native Numeric Number of original tweets favorite.
-#' @return N_geo_user  Numeric Number of Geolocated user by declaration.
 #' @return N_geo Numeric Number of Geolocated tweets.
 #'
 #' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
@@ -67,8 +66,7 @@ fastChannelstat<-function(x,check_duplicates=FALSE,stream="")
                            x$text=x$message
   }
   
-  if ( length(grep("locationUser",names(x)))) {x$locationUser=NA}
-  if ( length(grep("geo_lat",names(x)))) {  x$geo_lat=NA;
+  if ( length(grep("geo_lat",names(x)))==0) {  x$geo_lat=NA;
                                            x$geo_long=NA;}
             
     
@@ -78,7 +76,7 @@ fastChannelstat<-function(x,check_duplicates=FALSE,stream="")
              "U_native_mentions","N_native_links","U_native_links","mostRT_msg_native","M_ch_counts_native",    
              "N_full_users","U_full_users","N_full_hashtag","U_full_hashtag","N_full_mentions","U_full_mentions",        
              "N_full_links","U_full_links","mostRT_msg","N_replies","M_ch_counts_full","N_favor_full","Nfavor_native","most_favorited_messages",
-             "most_mentioned","most_retweeted","most_favorited","N_geo_user","N_geo")
+             "most_mentioned","most_retweeted","most_favorited","N_geo")
   
   res_df=data.frame(RTW_TW=NA,
                      TW=NA,
@@ -129,7 +127,6 @@ fastChannelstat<-function(x,check_duplicates=FALSE,stream="")
                     res_df$most_favorited=x$text
                     res_df$N_favor_full=ifelse(x$favoriteCount>0,1,0);
                     res_df$Nfavor_native=ifelse(x$isRetweet==1,0,res_df$N_favor_full)
-                    res$N_geo_user=length(which(!is.na(x$locationUser)))
                     res$N_geo=length(which(!is.na(x$geo_lat)))
                     return(res_df[name_one])
                     
@@ -239,7 +236,6 @@ fastChannelstat<-function(x,check_duplicates=FALSE,stream="")
   res_df$most_retweeted=try(paste(ind_retweeted_sum$Group.1[which(ind_retweeted_sum$x== max(ind_retweeted_sum$x))],collapse = " "))
   res_df$most_favorited=paste(ind_favorited_sum$Group.1[which(ind_favorited_sum$x== max(ind_favorited_sum$x))],collapse = " ")
   
-  res$N_geo_user=length(which(!is.na(x$locationUser)))
   res$N_geo=length(which(!is.na(x$geo_lat)))
   
   return(res_df[name_one])

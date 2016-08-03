@@ -96,8 +96,6 @@ N_favor_full Numeric Number of original tweets favorite.
 
 Nfavor_native Numeric Number of original tweets favorite.
 
-N_geo_user  Numeric Number of Geolocated user by declaration.
-
 N_geo Numeric Number of Geolocated tweets.
 }
 \description{

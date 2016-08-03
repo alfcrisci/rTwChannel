@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "#' daily_channel_stat\n#'\n#' @description Function to compute daily summary stats of a twitter channel.\n#'\n#' @param  x  Data.frame Dataset of tweets\n#' @param  check_duplicates Logical Check if exist duplicated tweets. \n#'\n#' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \\email{a.crisci@@ibimet.cnr.it}\n#' @keywords  channel, stats, twitter channel.\n#' @return daily_channel_final Data.frame of daily stats performed by \\code{fastChannelstat}\n#'\n#'\n#' @export\n#'\n#'\n#'\ndaily_channel_stat=function(x,check_duplicates=T,...) \n  { res_d=list();\n    datetemp=unique(x$date);\n\n    for ( i in 1:length(datetemp)) {    \n          temp=x[which(x$date == datetemp[i]),]\n          res_d[[i]]=suppressWarnings(data.frame(date=datetemp[i],fastChannelstat(temp,check_duplicates=T,...)))\n  \n          }\n\n    res_daily=do.call(\"rbind\",res_d)\n    date_full=data.frame(date=seq(range(res_daily$date)[1],range(res_daily$date)[2],by=1))\n    daily_channel_final=merge(date_full,res_daily,all.x=T)\n    daily_channel_final$ini_date_full=NULL\n    daily_channel_final$end_date_full=NULL\n    return(daily_channel_final)\n}\n",
+    "created" : 1470263299905.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "610059697",
+    "id" : "9A76924A",
+    "lastKnownWriteTime" : 1470261119,
+    "last_content_update" : 1470261119,
+    "path" : "~/Scrivania/alf_github/rTwChannel/R/daily_channel_stat.r",
+    "project_path" : "R/daily_channel_stat.r",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
