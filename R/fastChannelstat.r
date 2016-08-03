@@ -69,8 +69,8 @@ fastChannelstat<-function(x,check_duplicates=FALSE,stream="")
   if ( length(grep("geo_lat",names(x)))==0) {  x$geo_lat=NA;
                                                x$geo_long=NA;}
             
-    
-  geo_lat=ifelse(x$geo_lat==0,NA,x$geo_lat)
+  geo_lat=x$geo_lat  
+  geo_lat=ifelse(geo_lat==0,NA,geo_lat)
   
   if (check_duplicates==T) {x=x[which(duplicated(x$id)==F),]}
   name_one=c("RTW_TW","TW","RTW","ini_date_full","end_date_full","ratioRTW_TW","activity_days","activity_days_native","TW_daily","period_extent","relative_activity","RTW_TW_daily","retweetCount","favoriteCount","N_native_users","U_native_users","N_native_hashtag","U_native_hashtag","N_native_mentions",
