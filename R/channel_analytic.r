@@ -223,8 +223,7 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
    if (only_original_tweet==TRUE) { channel_obj=channel_obj[which(channel_obj$isRetweet==0),];
                                    }
   
-  message("Channel data aquired!\n") 
- 
+  
   mat_retweet_df=data.frame(date=NA,message=NA,authors=NA,retweeted_users=NA)
   
   #######################################################################################
