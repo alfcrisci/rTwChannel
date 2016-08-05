@@ -6,13 +6,12 @@ library(qdapRegex)
 library(qdapTools)
 library(igraph)
 library(tm)
-library( sjPlot)
+library(sjPlot)
 library(sjmisc)
 library(XLConnect)
 library(stringr)
 library(lubridate)
 options(digits=8)
-
 }
 
 
