@@ -85,14 +85,7 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   if (nrow(channel_obj) < Nmin) { stop("Channel with too few records.")};
   
   
-  message(paste("Channel:", deparse(substitute(channel_obj)),"\n",
-                "Elements:", rows ,"\n", 
-                "Ntop:", Ntop  ,"\n",
-                "Minimum data:",Nmin,"\n",
-                "Type stream:",naming,"\n",
-                "Native Channel:",only_original_tweet,"\n",
-                "Lowering case message's text:",lowercase,"\n"))
- 
+  
   
  
   ############################################################################################################################
@@ -202,6 +195,20 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
     
   }
   
+  message(paste("Channel:", deparse(substitute(channel_obj)),"\n",
+                "Elements Full:", nrow(channel_obj)  ,"\n", 
+                "Elements Native:", nrow(channel_obj[channel_obj$isRetweet==0),]  ,"\n", 
+                "Start date:",start_date ,"\n", 
+                "End date:", end_date ,"\n", 
+                "Ntop:", Ntop  ,"\n",
+                "Minimum data:",Nmin,"\n",
+                "Type stream:",naming,"\n",
+                "Graph Analisys:",graph_analisys,"\n",
+                "Corpus Analisys:",corpus_analisys,"\n",
+                "Inclufing Hashtag in Corpus Analisys:",corpus_hashtag,"\n",
+                "Native Channel:",only_original_tweet,"\n",
+                "Lowering case message's text:",lowercase,"\n"))
+ 
   #####################################################################################
   # Impose date time ordering
   
@@ -272,6 +279,8 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   # Create daily channel stats
   
   channel_stats=fastChannelstat(channel_obj,stream=naming)
+  
+  message("Channel stats calculated!\n")
   
   daily_stat=daily_channel_stat(channel_obj,check_duplicates=F,stream=naming)
   
