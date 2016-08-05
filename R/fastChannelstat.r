@@ -59,35 +59,34 @@
 
 fastChannelstat<-function(x,check_duplicates=FALSE,stream="")
   {
-  
+   name_one=c("RTW_TW","TW","RTW","ini_date_full","end_date_full","ratioRTW_TW","activity_days","activity_days_native","TW_daily","period_extent","relative_activity","RTW_TW_daily","retweetCount","favoriteCount","N_native_users","U_native_users","N_native_hashtag","U_native_hashtag","N_native_mentions",
+             "U_native_mentions","N_native_links","U_native_links","mostRT_msg_native","M_ch_counts_native",    
+             "N_full_users","U_full_users","N_full_hashtag","U_full_hashtag","N_full_mentions","U_full_mentions",        
+             "N_full_links","U_full_links","mostRT_msg","N_replies","M_ch_counts_full","N_favor_full","Nfavor_native","most_favorited_messages",
+             "most_mentioned","most_retweeted","most_favorited","N_geo")
+  res_df=data.frame(t(rep(NA,length(name_one))))
+  names(res_df=)=name_one
+
   if (stream=="DISIT") {
                            x$screenName=x$twitterUser 
                            x$isRetweet=x$retweet
                            x$text=x$message
   }
-  N_geo=NA
   
+ 
   if ( length(grep("geo_lat",names(x)))==1) { 
-  geo_lat=as.vector(x[c("geo_lat")]) 
-  N_geo=length(which(geo_lat>0))
+        geo_lat=as.vector(x[c("geo_lat")]) 
+        N_geo=length(which(geo_lat>0))
   }
   
   if (check_duplicates==T) {x=x[which(duplicated(x$twitterId)==F),]}
   
-  name_one=c("RTW_TW","TW","RTW","ini_date_full","end_date_full","ratioRTW_TW","activity_days","activity_days_native","TW_daily","period_extent","relative_activity","RTW_TW_daily","retweetCount","favoriteCount","N_native_users","U_native_users","N_native_hashtag","U_native_hashtag","N_native_mentions",
-             "U_native_mentions","N_native_links","U_native_links","mostRT_msg_native","M_ch_counts_native",    
-             "N_full_users","U_full_users","N_full_hashtag","U_full_hashtag","N_full_mentions","U_full_mentions",        
-             "N_full_links","U_full_links","mostRT_msg","N_replies","M_ch_counts_full","N_favor_full","Nfavor_native","most_favorited_messages",
-             "most_mentioned","most_retweeted","most_favorited","N_geo")
+ 
+  N_geo=NA
   
-  res_df=data.frame(RTW_TW=NA,
-                     TW=NA,
-                     RTW=NA,
-                     ini_date_full=NA,
-                     end_date_full=NA
-                   )
   
-  if (nrow(x)==1) {                res_df$RTW_TW=1;
+  if (nrow(x)==1) { 
+                    res_df$RTW_TW=1;
                     res_df$TW=ifelse(x$isRetweet==1,0,1);
                     res_df$RTW=res_df$RTW_TW-res_df$TW;
                     res_df$ratioRTW_TW=res_df$TW/res_df$RTW_TW;
@@ -129,7 +128,7 @@ fastChannelstat<-function(x,check_duplicates=FALSE,stream="")
                     res_df$N_favor_full=ifelse(x$favoriteCount>0,1,0);
                     res_df$Nfavor_native=ifelse(x$isRetweet==1,0,res_df$N_favor_full)
                     res_df$N_geo=N_geo
-                    return(res_df[name_one])
+                    return(res_df)
                     
                     }
   
@@ -241,7 +240,7 @@ fastChannelstat<-function(x,check_duplicates=FALSE,stream="")
   
   res_df$N_geo=N_geo
   
-  return(res_df[name_one])
+  return(res_df)
 
 }
 
