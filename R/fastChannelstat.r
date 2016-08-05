@@ -122,7 +122,6 @@ fastChannelstat<-function(x,check_duplicates=FALSE,stream="")
                     res_df$M_ch_counts_full=nchar(gsub(" ","",x$text))
                     res_df$M_ch_counts_native=ifelse(x$isRetweet==1,0,res_df$M_ch_counts_full)
                     res_df$N_replies=length(grep("^@",x$text))
-                    res_df$M_ch_counts_full=M_ch_counts_full
                     res_df$most_favorited_messages=x$text
                     res_df$most_mentioned=x$text
                     res_df$most_retweeted=x$text
