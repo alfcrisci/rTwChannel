@@ -185,7 +185,7 @@ fastChannelstat<-function(x,check_duplicates=FALSE,stream="")
   res_df$U_native_links=NA
   res_df$mostRT_msg_native=NA
   res_df$M_ch_counts_full=NA
-  res_df$M_ch_counts_native=NA
+  res_df$M_ch_counts_native=0
   res_df$Nfavor_native=NA
   
   if ( nrow(x_native) > 0) {
