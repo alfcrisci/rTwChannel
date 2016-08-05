@@ -85,8 +85,7 @@ fastChannelstat<-function(x,check_duplicates=FALSE,stream="")
   N_geo=0
  
   if ( length(grep("geo_lat",names(x)))==1) { 
-        geo_lat=as.vector(x[c("geo_lat")]) 
-        N_geo=length(which(geo_lat>0))
+         N_geo=as.numeric(length(which(as.numeric(x$geo_lat>0)))
   }
   
    
