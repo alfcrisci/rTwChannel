@@ -53,7 +53,7 @@
 #'
 
 channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, end_date=NULL,Ntop=11,
-                          Nmin=25,naming="",only_original_tweet=FALSE,lowercase=TRUE,stopword = tm::stopwords("it"), 
+                          Nmin=25,naming="",only_original_tweet=FALSE,lowercase=TRUE,stopword = as.character(tm::stopwords("it")), 
                           account_tw="",corpus_hashtag=TRUE,graph_analisys=FALSE,corpus_analisys=FALSE) 
                           
                           {
