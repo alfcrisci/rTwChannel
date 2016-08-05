@@ -82,7 +82,7 @@ fastChannelstat<-function(x,check_duplicates=FALSE,stream="")
   }
   
 
-  N_geo=NA
+  N_geo=0
  
   if ( length(grep("geo_lat",names(x)))==1) { 
         geo_lat=as.vector(x[c("geo_lat")]) 
@@ -239,7 +239,7 @@ if (nrow(x)==1) {   res_df$RTW_TW=1;
   res_df$most_mentioned=paste(names(ind_mentioned[which(ind_mentioned == max(ind_mentioned)),]),collapse = " ")
   res_df$most_retweeted=try(paste(ind_retweeted_sum$Group.1[which(ind_retweeted_sum$x== max(ind_retweeted_sum$x))],collapse = " "))
   res_df$most_favorited=paste(ind_favorited_sum$Group.1[which(ind_favorited_sum$x== max(ind_favorited_sum$x))],collapse = " ")
-  
+  res_df$N_geo=N_geo
    
   return(res_df)
 
