@@ -423,12 +423,11 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   corpus=NULL
   word_freq_matr=NULL
   
-  if ( (corpus_analisys==TRUE) & (length(channel_obj$isRetweet[which(channel_obj$isRetweet==0)]) > 0)) 
+  if ( (corpus_analisys==TRUE)) 
                                {
     
-                               corpus=getCorpus(channel_obj$text[which(channel_obj$isRetweet==0),],hashtag=corpus_hashtag)
+                               corpus=getCorpus(channel_obj$text,hashtag=corpus_hashtag)
                                word_freq_matr=qdap::wfm(corpus,stopwords=stopword)
-       
                                message("Corpus analisys of channel are done!\n")
                                }
   
