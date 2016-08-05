@@ -107,6 +107,7 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
     channel_obj$date <- as.Date(lubridate::dmy_hms(channel_obj$created))
     channel_obj$screeName=channel_obj$from_user
     channel_obj$id=as.numeric(channel_obj$id_str)
+    channel_obj$twitterId=as.numeric(channel_obj$id_str)
     channel_obj$lang=channel_obj$user_lang
     channel_obj$from_user<-NULL
     channel_obj$user_lang<-NULL
@@ -161,6 +162,7 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
     
   if ( naming == "twitter") {
     
+    channel_obj$twitterId=as.numeric(channel_obj$id)
     channel_obj$date=as.Date(channel_obj$created)
     channel_obj$hour=lubridate::hour(channel_obj$created)
     channel_obj$month=lubridate::month(channel_obj$created)
@@ -273,7 +275,7 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   
   channel_stats=fastChannelstat(channel_obj,stream=naming)
   
-  daily_stat=daily_channel_stat(channel_obj,stream=naming)
+  daily_stat=daily_channel_stat(channel_obj,check_duplicated=F,stream=naming)
   
   message("Daily stats calculated!\n")
   
