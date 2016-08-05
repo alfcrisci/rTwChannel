@@ -20,7 +20,7 @@ daily_channel_stat=function(x,stream="")
 
     for ( i in 1:length(datetemp)) {    
           temp=x[which(x$date == datetemp[i]),]
-          res_d[[i]]=data.frame(date=as.Date(datetemp[i]),fastChannelstat(temp,check_duplicates=T))
+          res_d[[i]]=data.frame(date=as.Date(datetemp[i]),fastChannelstat(temp,check_duplicates=T,stream=stream))
   
           }
 
