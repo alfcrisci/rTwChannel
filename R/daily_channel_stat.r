@@ -3,7 +3,7 @@
 #' @description Function to compute daily summary stats of a twitter channel.
 #'
 #' @param  x  Data.frame Dataset of tweets
-#' @param  check_duplicates Logical Check if exist duplicated tweets. 
+#' @param  stream Character Type of stream.
 #'
 #' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
 #' @keywords  channel, stats, twitter channel.
@@ -14,13 +14,14 @@
 #'
 #'
 #'
-daily_channel_stat=function(x,check_duplicates=TRUE,stream="DISIT") 
+daily_channel_stat=function(x,stream="DISIT") 
   { res_d=list();
     datetemp=unique(x$date);
 
     for ( i in 1:length(datetemp)) {    
           temp=x[which(x$date == datetemp[i]),]
-          res_d[[i]]=suppressWarnings(data.frame(date=datetemp[i],fastChannelstat(temp,check_duplicates=check_duplicates,stream=stream)))
+          temp_df=fastChannelstat(temp,check_duplicates=T,stream=stream)
+          res_d[[i]]=suppressWarnings(data.frame(date=datetemp[i],temp_df))
   
           }
 
