@@ -26,9 +26,6 @@ daily_channel_stat=function(x,stream="")
 
     res_daily=do.call("rbind",res_d)
     
-    if ( nrow(res_daily) == 1) {  return(res_daily)
-                               }
-    
     date_full=data.frame(date=seq(range(res_daily$date)[1],range(res_daily$date)[2],by=1))
     daily_channel_final=merge(date_full,res_daily,all.x=T)
     return(daily_channel_final)
