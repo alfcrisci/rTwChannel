@@ -445,7 +445,7 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
            table_authors=table_authors,
            table_authors_retweeter=table_retweeter,
            retweeted_authors=rank_authors_retweeted,
-           favorited_authors=rank_authors_favorite,
+           favorited_authors=rank_authors_favorited,
            favorite_message=ls_favorite_df,
            rank_message_retweeted=rank_message_retweeted,
            top_message=table_message[1:Ntop,],
