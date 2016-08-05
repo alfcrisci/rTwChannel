@@ -119,8 +119,8 @@ fastChannelstat<-function(x,check_duplicates=FALSE,stream="")
                     res_df$N_native_links=ifelse(x$isRetweet==1,0,res_df$N_full_links)
                     res_df$U_native_links=ifelse(x$isRetweet==1,0,res_df$N_full_links)
                     res_df$mostRT_msg_native=x$text
-                    res_df$M_ch_counts_full=nchar(gsub(" ","",x$text))
-                    res_df$M_ch_counts_native=ifelse(x$isRetweet==1,0,res_df$M_ch_counts_full)
+                    res_df$M_ch_counts_full=as.numeric(nchar(gsub(" ","",x$text)))
+                    res_df$M_ch_counts_native=ifelse(x$isRetweet==1,0,as.numeric(nchar(gsub(" ","",x$text))))
                     res_df$N_replies=length(grep("^@",x$text))
                     res_df$most_favorited_messages=x$text
                     res_df$most_mentioned=x$text
@@ -184,6 +184,7 @@ fastChannelstat<-function(x,check_duplicates=FALSE,stream="")
   res_df$N_native_links=NA
   res_df$U_native_links=NA
   res_df$mostRT_msg_native=NA
+  res_df$M_ch_counts_full=NA
   res_df$M_ch_counts_native=NA
   res_df$Nfavor_native=NA
   
@@ -202,7 +203,7 @@ fastChannelstat<-function(x,check_duplicates=FALSE,stream="")
                           res_df$N_native_links=suppressWarnings(try(length(native_links[[1]])))
                           res_df$U_native_links=suppressWarnings(try(length(unique(native_links[[1]]))))
                           res_df$mostRT_msg_native=paste(unique(paste(x$text[which(x_native$retweetCount == max(x$retweetCount))])),collapse = " ")
-                          res_df$M_ch_counts_native=mean(nchar(x_native$text))
+                          res_df$M_ch_counts_native=mean(as.numeric(nchar(gsub(" ","",x_native$text))))
                           res_df$Nfavor_native=length(which(x_native$favoriteCount>0));
                           
                           
@@ -224,7 +225,7 @@ fastChannelstat<-function(x,check_duplicates=FALSE,stream="")
   
   
   res_df$N_replies=length(grep("^@",x$text))
-  res_df$M_ch_counts_full=mean(nchar(x$text))
+  res_df$M_ch_counts_full=mean(as.numeric(nchar(gsub(" ","",x$text))))
   res_df$most_favorited_messages=paste(unique(paste(x$text[which(x$favoriteCount == max(x$favoriteCount))])),collapse = " ")
   res_df$N_favor_full=length(which(x$favoriteCount>0));
   
