@@ -85,7 +85,7 @@ fastChannelstat<-function(x,check_duplicates=FALSE,stream="")
   N_geo=0
  
   if ( length(grep("geo_lat",names(x)))==1) { 
-         N_geo=as.numeric(length(which(as.numeric(x$geo_lat>0)))
+         N_geo=as.numeric(length(which(as.numeric(x$geo_lat>0))));
   }
   
    
@@ -130,8 +130,8 @@ if (nrow(x)==1) {   res_df$RTW_TW=1;
                     res_df$N_replies=length(grep("^@",x$text))
                     res_df$most_favorited_messages=ifelse(x$favoriteCount>0,x$text,"")
                     res_df$most_mentioned=x$mentions
-                    res_df$most_retweeted=ifelse(x$favoriteCount>0,x$screenName,"")
-                    res_df$most_favorited=ifelse(x$isRetweet==1,0,res_df$N_favor_full)
+                    res_df$most_retweeted=ifelse(x$isRetweet==1,"",x$screenName)
+                    res_df$most_favorited=ifelse(x$favoriteCount>0,x$screenName,"")
                     res_df$N_favor_full=ifelse(x$favoriteCount>0,1,0);
                     res_df$Nfavor_native=ifelse(x$isRetweet==1,0,res_df$N_favor_full)
                     res_df$N_geo=N_geo
@@ -235,7 +235,7 @@ if (nrow(x)==1) {   res_df$RTW_TW=1;
   ind_retweeted_sum=try(aggregate(ind_retweeted$retweetCount,by=list(ind_retweeted$screenName),FUN = sum))
   ind_favorited_sum=aggregate(ind_favorited$favoriteCount,by=list(ind_favorited$screenName),FUN = sum)
  
-  res_df$most_mentioned=paste(names(ind_mentioned[which(ind_mentioned == max(ind_mentioned)),]),collapse = " ")
+  res_df$most_mentioned=gsub("@","",paste(names(ind_mentioned[which(ind_mentioned == max(ind_mentioned)),]),collapse = " "))
   res_df$most_retweeted=try(paste(ind_retweeted_sum$Group.1[which(ind_retweeted_sum$x== max(ind_retweeted_sum$x))],collapse = " "))
   res_df$most_favorited=paste(ind_favorited_sum$Group.1[which(ind_favorited_sum$x== max(ind_favorited_sum$x))],collapse = " ")
   res_df$N_geo=N_geo
