@@ -302,7 +302,7 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   
   rank_message_retweeted=data.frame(message=NA,SumretweetCount=NA)
   rank_authors_retweeted=data.frame(message=NA,SumretweetCount=NA)
-  table_retweeted=data.frame(author_retweeter=NA,freq=NA)
+  table_retweeter=data.frame(author_retweeter=NA,freq=NA)
   
   rank_authors_favorited=aggregate(as.numeric(ls_favorite_df$favoriteCount),list(ls_favorite_df$authors),sum)
   rank_authors_favorited=rank_authors_favorited[order(-rank_authors_favorited[,2]),]
