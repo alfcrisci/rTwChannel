@@ -1,4 +1,3 @@
-
 .onLoad = function(libname, pkgname) {
 library(curl) 
 library(qdap)
@@ -13,8 +12,3 @@ library(stringr)
 library(lubridate)
 options(digits=8)
 }
-
-
-
-
-
