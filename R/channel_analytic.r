@@ -298,7 +298,8 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   
    
   
-  #
+  ########################################################################################################################
+  
   rank_message_retweeted=data.frame(message=NA,SumretweetCount=NA)
   rank_authors_retweeted=data.frame(message=NA,SumretweetCount=NA)
   table_retweeted=data.frame(author_retweeter=NA,freq=NA)
@@ -430,7 +431,7 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   
   ########################################################################################
   
-  res=list(channel_stat=full_stat,
+  res=list(channel_stat=channel_stats,
            daily_stat=daily_stat,
            table_hash=table_hash,
            table_message=table_message,
