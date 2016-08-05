@@ -9,7 +9,7 @@ daily_channel_stat(x, check_duplicates = T, ...)
 \arguments{
 \item{x}{Data.frame Dataset of tweets}
 
-\item{check_duplicates}{Logical Check if exist duplicated tweets.}
+\item{stream}{Character Tye of stream.}
 }
 \value{
 daily_channel_final Data.frame of daily stats performed by \code{fastChannelstat}
