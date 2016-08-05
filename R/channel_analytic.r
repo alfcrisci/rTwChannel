@@ -79,12 +79,10 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   if (as.Date(start_date) > as.Date(end_date)) { stop(" End Date is older than Start date! ")};
   
   
-  rows=nrow(channel_obj)
-  
   ##############################################################################################################
   # Check minimal dimensionality
   
-  if (rows < Nmin) { stop("Channel with too few records.")};
+  if (nrow(channel_obj) < Nmin) { stop("Channel with too few records.")};
   
   
   message(paste("Channel:", deparse(substitute(channel_obj)),"\n",
