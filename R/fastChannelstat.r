@@ -202,7 +202,7 @@ fastChannelstat<-function(x,check_duplicates=FALSE,stream="")
                           res_df$N_native_links=suppressWarnings(try(length(native_links[[1]])))
                           res_df$U_native_links=suppressWarnings(try(length(unique(native_links[[1]]))))
                           res_df$mostRT_msg_native=paste(unique(paste(x$text[which(x_native$retweetCount == max(x$retweetCount))])),collapse = " ")
-                          res_df$M_ch_counts_native=mean(nchar(x_native$message))
+                          res_df$M_ch_counts_native=mean(nchar(x_native$text))
                           res_df$Nfavor_native=length(which(x_native$favoriteCount>0));
                           
                           
