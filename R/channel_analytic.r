@@ -197,7 +197,7 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   
   message(paste("Channel:", deparse(substitute(channel_obj)),"\n",
                 "Elements Full:", nrow(channel_obj)  ,"\n", 
-                "Elements Native:", nrow(channel_obj[channel_obj$isRetweet==0),]  ,"\n", 
+                "Elements Native:", nrow(channel_obj[which(channel_obj$isRetweet==0),]  ,"\n", 
                 "Start date:",start_date ,"\n", 
                 "End date:", end_date ,"\n", 
                 "Ntop:", Ntop  ,"\n",
