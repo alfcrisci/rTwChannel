@@ -72,7 +72,8 @@ fastChannelstat<-function(x,check_duplicates=FALSE,stream="")
   N_geo=length(which(geo_lat>0))
   }
   
-  if (check_duplicates==T) {x=x[which(duplicated(x$id)==F),]}
+  if (check_duplicates==T) {x=x[which(duplicated(x$twitterId)==F),]}
+  
   name_one=c("RTW_TW","TW","RTW","ini_date_full","end_date_full","ratioRTW_TW","activity_days","activity_days_native","TW_daily","period_extent","relative_activity","RTW_TW_daily","retweetCount","favoriteCount","N_native_users","U_native_users","N_native_hashtag","U_native_hashtag","N_native_mentions",
              "U_native_mentions","N_native_links","U_native_links","mostRT_msg_native","M_ch_counts_native",    
              "N_full_users","U_full_users","N_full_hashtag","U_full_hashtag","N_full_mentions","U_full_mentions",        
