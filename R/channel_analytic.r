@@ -404,17 +404,19 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   
   if (naming!="account_statistics") {
    
-                if ((only_original_tweet==FALSE) & (length(mat_retweet_df$authors)>0)) {
-                { 
-               rt_graph=data.frame(whoretweet=as.character(mat_retweet_df$authors),whomentioned=as.character(mat_retweet_df$retweeted_users))
-               rt_graph = igraph::graph.edgelist(as.matrix(rt_graph))
-               E(rt_graph )$weight <- 1
-               rt_graph <- igraph::simplify(rt_graph,edge.attr.comb = list(weight = "sum", function(x)length(x)))
-               }
-                }
+           if ((only_original_tweet==FALSE) & (length(mat_retweet_df$authors)>0)) 
+                                       {
+                                      rt_graph=data.frame(whoretweet=as.character(mat_retweet_df$authors),whomentioned=as.character(mat_retweet_df$retweeted_users))
+                                      rt_graph = igraph::graph.edgelist(as.matrix(rt_graph))
+                                      E(rt_graph )$weight <- 1
+                                      rt_graph <- igraph::simplify(rt_graph,edge.attr.comb = list(weight = "sum", function(x)length(x)))
+                                      }
+                                     }
+
+                  
   
-  message("Graphs of channel are done!\n")
-  
+                  message("Graphs of channel are done!\n")
+  }
   ############################################################################################################
   # Get corpus and termdocfrequency matrix as qdap object
   
@@ -458,8 +460,7 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
            channel_data=channel_obj,
            account_stats=NULL,
            channel_corpus=corpus,
-           word_freq_matr=word_freq_matr
-)
+           word_freq_matr=word_freq_matr)
   
   if (naming=="account_statistics") 
     
