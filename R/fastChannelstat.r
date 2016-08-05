@@ -225,7 +225,7 @@ fastChannelstat<-function(x,check_duplicates=FALSE,stream="")
   
   
   res_df$N_replies=length(grep("^@",x$text))
-  res_df$M_ch_counts_full=mean(nchar(x$message))
+  res_df$M_ch_counts_full=mean(nchar(x$text))
   res_df$most_favorited_messages=paste(unique(paste(x$text[which(x$favoriteCount == max(x$favoriteCount))])),collapse = " ")
   res_df$N_favor_full=length(which(x$favoriteCount>0));
   
