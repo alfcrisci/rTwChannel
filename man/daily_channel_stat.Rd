@@ -4,7 +4,7 @@
 \alias{daily_channel_stat}
 \title{daily_channel_stat}
 \usage{
-daily_channel_stat(x, check_duplicates = T, ...)
+daily_channel_stat(x, stream="")
 }
 \arguments{
 \item{x}{Data.frame Dataset of tweets}
