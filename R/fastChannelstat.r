@@ -59,11 +59,17 @@
 
 fastChannelstat<-function(x,check_duplicates=FALSE,stream="")
   {
-   name_one=c("RTW_TW","TW","RTW","ini_date_full","end_date_full","ratioRTW_TW","activity_days","activity_days_native","TW_daily","period_extent","relative_activity","RTW_TW_daily","retweetCount","favoriteCount","N_native_users","U_native_users","N_native_hashtag","U_native_hashtag","N_native_mentions",
-             "U_native_mentions","N_native_links","U_native_links","mostRT_msg_native","M_ch_counts_native",    
-             "N_full_users","U_full_users","N_full_hashtag","U_full_hashtag","N_full_mentions","U_full_mentions",        
-             "N_full_links","U_full_links","mostRT_msg","N_replies","M_ch_counts_full","N_favor_full","Nfavor_native","most_favorited_messages",
-             "most_mentioned","most_retweeted","most_favorited","N_geo")
+   name_one=c("RTW_TW","TW","RTW","ini_date_full","end_date_full","ratioRTW_TW","activity_days",
+              "activity_days_native","TW_daily","period_extent","relative_activity","RTW_TW_daily",
+              "retweetCount","favoriteCount","N_native_users","U_native_users","N_native_hashtag",
+              "U_native_hashtag","N_native_mentions","U_native_mentions","N_native_links","U_native_links",
+              "mostRT_msg_native","M_ch_counts_native","N_full_users","U_full_users","N_full_hashtag","U_full_hashtag",
+              "N_full_mentions","U_full_mentions","N_full_links","U_full_links","mostRT_msg","N_replies","M_ch_counts_full",
+              "N_favor_full","Nfavor_native","most_favorited_messages",
+              "most_mentioned","most_retweeted","most_favorited","N_geo")
+             
+      
+
   res_df=data.frame(t(rep(NA,length(name_one))))
   names(res_df)=name_one
   
@@ -178,17 +184,7 @@ fastChannelstat<-function(x,check_duplicates=FALSE,stream="")
   full_users=strsplit(gsub(" NA"," ",do.call(paste, c(as.list(x$twitterUser), sep=" "))), "\\s+")
   full_hashtag=strsplit(gsub(" NA"," ",do.call(paste, c(as.list(x$hashtagsOnTwitter), sep=" "))), "\\s+")
   
-  res_df$N_native_users=NA
-  res_df$U_native_users=NA
-  res_df$N_native_hashtag=NA
-  res_df$U_native_hashtag=NA
-  res_df$N_native_mentions=NA
-  res_df$U_native_mentions=NA
-  res_df$N_native_links=NA
-  res_df$U_native_links=NA
-  res_df$mostRT_msg_native=NA
-  res_df$Nfavor_native=NA
-  
+ 
   if ( nrow(x_native) > 0) {
                           native_mentions=strsplit(gsub(" NA"," ",do.call(paste, c(as.list(x_native$mentions), sep=" "))), "\\s+")
                           native_links=strsplit(gsub(" NA"," ",do.call(paste, c(as.list(x_native$links), sep=" "))), "\\s+")
