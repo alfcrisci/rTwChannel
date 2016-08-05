@@ -125,14 +125,14 @@ if (nrow(x)==1) {   res_df$RTW_TW=1;
                     res_df$U_native_mentions=ifelse(x$isRetweet==1,0,res_df$N_full_mentions)
                     res_df$N_native_links=ifelse(x$isRetweet==1,0,res_df$N_full_links)
                     res_df$U_native_links=ifelse(x$isRetweet==1,0,res_df$N_full_links)
-                    res_df$mostRT_msg_native=x$text
+                    res_df$mostRT_msg_native=NA
                     res_df$M_ch_counts_full=mean(as.numeric(nchar(gsub(" ","",x$text))))
                     res_df$M_ch_counts_native=ifelse(x$isRetweet==1,0,mean(as.numeric(nchar(gsub(" ","",x$text)))))
                     res_df$N_replies=length(grep("^@",x$text))
-                    res_df$most_favorited_messages=x$text
-                    res_df$most_mentioned=x$text
-                    res_df$most_retweeted=x$text
-                    res_df$most_favorited=x$text
+                    res_df$most_favorited_messages=ifelse(x$favoriteCount>0,x$text)
+                    res_df$most_mentioned=x$mentions
+                    res_df$most_retweeted=ifelse(x$favoriteCount>0,x$screenName,"")
+                    res_df$most_favorited=ifelse(x$isRetweet==1,0,res_df$N_favor_full)
                     res_df$N_favor_full=ifelse(x$favoriteCount>0,1,0);
                     res_df$Nfavor_native=ifelse(x$isRetweet==1,0,res_df$N_favor_full)
                     res_df$N_geo=N_geo
