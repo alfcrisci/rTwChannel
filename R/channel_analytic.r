@@ -205,9 +205,9 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
                 "Type stream:",naming,"\n",
                 "Graph Analisys:",graph_analisys,"\n",
                 "Corpus Analisys:",corpus_analisys,"\n",
-                "Inclufing Hashtag in Corpus Analisys:",corpus_hashtag,"\n",
+                "Including Hashtag in Corpus Analisys:",corpus_hashtag,"\n",
                 "Native Channel:",only_original_tweet,"\n",
-                "Lowering case message's text:",lowercase,"\n"))
+                "Lowering case message's text:",lowercase,"\n"));
  
   #####################################################################################
   # Impose date time ordering
