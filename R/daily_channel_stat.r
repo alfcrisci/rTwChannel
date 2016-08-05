@@ -14,13 +14,13 @@
 #'
 #'
 #'
-daily_channel_stat=function(x,check_duplicates=T,stream="DISIT") 
+daily_channel_stat=function(x,check_duplicates=TRUE,stream="DISIT") 
   { res_d=list();
     datetemp=unique(x$date);
 
     for ( i in 1:length(datetemp)) {    
           temp=x[which(x$date == datetemp[i]),]
-          res_d[[i]]=suppressWarnings(data.frame(date=datetemp[i],fastChannelstat(temp,check_duplicates=T,stream=stream)))
+          res_d[[i]]=suppressWarnings(data.frame(date=datetemp[i],fastChannelstat(temp,check_duplicates=check_duplicates,stream=stream)))
   
           }
 
