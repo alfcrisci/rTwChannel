@@ -20,13 +20,13 @@ daily_channel_stat=function(x,stream="")
 
     for ( i in 1:length(datetemp)) {    
           temp=x[which(x$date == datetemp[i]),]
-          res_d[[i]]=data.frame(date=datetemp[i],fastChannelstat(temp,check_duplicates=T))
+          res_d[[i]]=data.frame(date=as.Date(datetemp[i]),fastChannelstat(temp,check_duplicates=T))
   
           }
 
     res_daily=do.call("rbind",res_d)
     
-    date_full=data.frame(date=seq(range(res_daily$date,range(res_daily$date)[2],by=1)))
+    date_full=data.frame(date=seq(range(res_daily$date)[1],range(res_daily$date)[2],by=1)))
     daily_channel_final=merge(date_full,res_daily,all.x=T)
     return(daily_channel_final)
 }
