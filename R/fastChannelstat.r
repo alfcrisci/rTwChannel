@@ -129,7 +129,7 @@ if (nrow(x)==1) {   res_df$RTW_TW=1;
                     res_df$M_ch_counts_full=mean(as.numeric(nchar(gsub(" ","",x$text))))
                     res_df$M_ch_counts_native=ifelse(x$isRetweet==1,0,mean(as.numeric(nchar(gsub(" ","",x$text)))))
                     res_df$N_replies=length(grep("^@",x$text))
-                    res_df$most_favorited_messages=ifelse(x$favoriteCount>0,x$text)
+                    res_df$most_favorited_messages=ifelse(x$favoriteCount>0,x$text,"")
                     res_df$most_mentioned=x$mentions
                     res_df$most_retweeted=ifelse(x$favoriteCount>0,x$screenName,"")
                     res_df$most_favorited=ifelse(x$isRetweet==1,0,res_df$N_favor_full)
