@@ -65,7 +65,7 @@ fastChannelstat<-function(x,check_duplicates=FALSE,stream="")
              "N_full_links","U_full_links","mostRT_msg","N_replies","M_ch_counts_full","N_favor_full","Nfavor_native","most_favorited_messages",
              "most_mentioned","most_retweeted","most_favorited","N_geo")
   res_df=data.frame(t(rep(NA,length(name_one))))
-  names(res_df=)=name_one
+  names(res_df)=name_one
 
   if (stream=="DISIT") {
                            x$screenName=x$twitterUser 
