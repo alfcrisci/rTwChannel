@@ -321,7 +321,7 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
     names(rank_message_retweeted)<-c("message","SumretweetCount")
     
     rank_authors_retweeted=aggregate(as.numeric(ls_message_df$retweetCount),list(ls_message_df$authors),sum)
-    rank_authors=rank_authors_retweeted[order(-rank_authors_retweeted[,2]),]
+    rank_authors_retweeted=rank_authors_retweeted[order(-rank_authors_retweeted[,2]),]
     names(rank_authors_retweeted)<-c("authors","SumretweetCount")
     
     table_retweeter=as.data.frame.array(sort(table(tolower(mat_retweet_df$authors)),decreasing=T))
@@ -444,17 +444,17 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
            table_links=table_links,
            table_authors=table_authors,
            table_authors_retweeter=table_retweeter,
-           retweeted_authors=rank_authors_retweet,
+           retweeted_authors=rank_authors_retweeted,
            favorited_authors=rank_authors_favorite,
            favorite_message=ls_favorite_df,
-           rank_message_retweeted=rank_message_retweet,
+           rank_message_retweeted=rank_message_retweeted,
            top_message=table_message[1:Ntop,],
            top_authors=table_authors[1:Ntop,],
            top_hash=table_hash[1:Ntop,],
            top_mentions=table_mentions[1:Ntop,],
            top_authors_retweeter=table_retweeter[1:Ntop,],
-           topfull_authors_retweeted=rank_authors_retweet[1:Ntop,],
-           topfull_message_retweeted=rank_message_retweet[1:Ntop,],
+           topfull_authors_retweeted=rank_authors_retweeted[1:Ntop,],
+           topfull_message_retweeted=rank_message_retweeted[1:Ntop,],
            graph_retweet=rt_graph,
            graph_mentions=men_graph,
            channel_data=channel_obj,
