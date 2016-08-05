@@ -79,8 +79,7 @@ fastChannelstat<-function(x,check_duplicates=FALSE,stream="")
                            x$text=x$message
   }
   
-  if (nrow(x)==0) { return(res_df)}
- 
+
   N_geo=NA
  
   if ( length(grep("geo_lat",names(x)))==1) { 
