@@ -373,7 +373,11 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   names(table_mentions)<-c("mention","freq")
   rownames(table_mentions)<-NULL
   
-  
+  table_links=as.data.frame.array(sort(table(mat_links_df$links),decreasing=T))
+  table_links=data.frame(users=rownames(table_links),
+                            Freq=as.vector(table_links))
+  names(table_links)<-c("mention","freq")
+  rownames(table_links)<-NULL
  
   ##########################################################################
   # Graph analitics
