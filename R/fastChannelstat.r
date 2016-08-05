@@ -64,8 +64,8 @@ fastChannelstat<-function(x,check_duplicates=FALSE,stream="")
               "retweetCount","favoriteCount","N_native_users","U_native_users","N_native_hashtag",
               "U_native_hashtag","N_native_mentions","U_native_mentions","N_native_links","U_native_links",
               "mostRT_msg_native","M_ch_counts_native","N_full_users","U_full_users","N_full_hashtag","U_full_hashtag",
-              "N_full_mentions","U_full_mentions","N_full_links","U_full_links","mostRT_msg","N_replies","M_ch_counts_full",
-              "N_favor_full","Nfavor_native","most_favorited_messages",
+              "N_full_mentions","U_full_mentions","N_full_links","U_full_links","mostRT_msg","mostRT_msg_native","N_replies",
+              "M_ch_counts_full", "N_favor_full","Nfavor_native","most_favorited_messages",
               "most_mentioned","most_retweeted","most_favorited","N_geo")
              
       
