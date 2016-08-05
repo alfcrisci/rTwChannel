@@ -275,7 +275,7 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   
   channel_stats=fastChannelstat(channel_obj,stream=naming)
   
-  daily_stat=daily_channel_stat(channel_obj,check_duplicated=F,stream=naming)
+  daily_stat=daily_channel_stat(channel_obj,check_duplicates=F,stream=naming)
   
   message("Daily stats calculated!\n")
   
