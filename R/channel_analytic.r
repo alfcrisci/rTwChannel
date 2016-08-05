@@ -428,6 +428,12 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
     
                                corpus=getCorpus(channel_obj$text,hashtag=corpus_hashtag)
                                word_freq_matr=qdap::wfm(corpus,stopwords=stopword)
+                               word_freq_matr=as.data.frame(word_freq_matr)
+                               word_freq_matr$word=row.names(word_freq_matr)
+                               word_freq_matr=word_freq_matr[c("word","grouping.var")]
+                               names(word_freq_matr)=c("Words","Freq")
+                               word_freq_matr=word_freq_matr[rev(order(word_freq_matr$Freq)),]
+                               row.names(word_freq_matr)=NULL
                                message("Corpus analisys of channel are done!\n")
                                }
   
