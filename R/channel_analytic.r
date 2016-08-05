@@ -402,8 +402,9 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   # Create a retweet graph
   
   
-  if ((naming!="account_statistics") & (length(channel_obj$isRetweet[which(channel_obj$isRetweet==1)]) > 0)) 
-    
+  if (naming!="account_statistics") {
+   
+                if ((only_original_tweet==FALSE) & (length(mat_retweet_df$authors)>0))
                 { 
                rt_graph=data.frame(whoretweet=as.character(mat_retweet_df$authors),whomentioned=as.character(mat_retweet_df$retweeted_users))
                rt_graph = igraph::graph.edgelist(as.matrix(rt_graph))
