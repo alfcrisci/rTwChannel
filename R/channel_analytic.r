@@ -273,17 +273,7 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   
   message("Daily stats calculated!\n")
   
-  rank_message_retweeted=data.frame(message=NA,SumretweetCount=NA)
-  rank_authors_retweeted=data.frame(message=NA,SumretweetCount=NA)
-  table_retweeted=data.frame(author_retweeter=NA,freq=NA)
   
-  rank_authors_favorited=aggregate(as.numeric(ls_favorite_df$favoriteCount),list(ls_favorite_df$authors),sum)
-  rank_authors_favorited=rank_authors_favorited[order(-rank_authors_favorited[,2]),]
-  
-  names(rank_authors_favorited)<-c("authors","SumfavoriteCount")
-  
-  
- 
   #######################################################################################
   # Create favorite data.frame date,message and authors.
   
@@ -308,7 +298,19 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   
    
   
-  #################################################################################
+  #
+  rank_message_retweeted=data.frame(message=NA,SumretweetCount=NA)
+  rank_authors_retweeted=data.frame(message=NA,SumretweetCount=NA)
+  table_retweeted=data.frame(author_retweeter=NA,freq=NA)
+  
+  rank_authors_favorited=aggregate(as.numeric(ls_favorite_df$favoriteCount),list(ls_favorite_df$authors),sum)
+  rank_authors_favorited=rank_authors_favorited[order(-rank_authors_favorited[,2]),]
+  
+  names(rank_authors_favorited)<-c("authors","SumfavoriteCount")
+  
+  
+ 
+ ################################################################################
   # Frequency analisys
   
   if ( (length(channel_obj$isRetweet[which(channel_obj$isRetweet==1)]) > 0) && (only_original_tweet==FALSE)) {
