@@ -19,52 +19,39 @@
 #'
 #'
 
-channel_outputs=function(stat_obj, param="channel_stat", suffix_file="LIG", na_string="",filecsv=FALSE, html=FALSE,excel=TRUE){
+channel_outputs=function(stat_obj, param="channel_stat", suffix_file="LIG", na_string="",filecsv=FALSE, html=FALSE,excel=TRUE)
+  {
+                
    options(java.parameters = "-Xmx4g" )
-  param_list=list(channel_stat=1,
-                  table_message=2,
+   param_list=list(channel_stat=1,
+                  daily_stat=2,
                   table_hash=3,
-                  table_mentions=4,
-                  table_authors=5,
-                  table_replies=6,
-                  table_authors_retweeted=7,
+                  table_message=4,
+                  table_mentions=5,
+                  table_links=6,
+                  table_authors=7,
                   table_authors_retweeter=8,
-                  rank_authors_retweet=9,
-                  rank_message_retweet=10,
-                  top_message=11,
-                  top_authors=12,
-                  top_hash=13,
-                  top_mentions=14,
-                  top_replies=15,
-                  top_authors_retweeted=16,
+                  retweeted_authors=9,
+                  favorited_authors=10,
+                  favorite_message=11,
+                  rank_message_retweeted=12,
+                  top_message=13,
+                  top_authors=14,
+                  top_hash=15,
+                  top_mentions=16,
                   top_authors_retweeter=17,
                   topfull_authors_retweeted=18,
                   topfull_message_retweeted=19,
-                  daily_stat=20,
-                  authors_date=21,
-                  links_date=22,
-                  hash_date=23,
-                  tag_date=24,
-                  unique_message=25,
-                  unique_authors=26,
-                  unique_hash=27,
-                  unique_mentions=28,
-                  unique_authors_retweeted=29,
-                  unique_authors_retweeter=30,
-                  uniquefull_authors_retweeted=31,
-                  uniquefull_message_retweeted=32,
-                  graph_retweet_df=33,
-                  graph_hash_df=34,
-                  graph_mentions_df=35,
-                  authors_favorite=36,
-                  favorite_message_top=37,
-                  channel_data=38,
-                  account_stats=39
-  )
+                  graph_retweet=20,
+                  graph_mentions=21,
+                  channel_data=22,
+                  account_stats=23,
+                  channel_corpus=24,
+                  word_freq_matr=25
+                  )
+  
   
   res=stat_obj[[as.numeric(param_list[param])]]
-  
-  if (param=="daily_stat") { res[,6:8]=round(res[,6:8],1) }
   
   if ( filecsv == TRUE) {
     write.csv(res,paste0(suffix_file,"_",param,".csv"),na=na_string,row.names = F)
