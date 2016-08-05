@@ -94,7 +94,7 @@ fastChannelstat<-function(x,check_duplicates=FALSE,stream="")
   
   
   
-res_df$RTW_TW=1;
+if (nrow(x)==1) {   res_df$RTW_TW=1;
                     res_df$TW=ifelse(x$isRetweet==1,0,1);
                     res_df$RTW=res_df$RTW_TW-res_df$TW;
                     res_df$ratioRTW_TW=res_df$TW/res_df$RTW_TW;
@@ -136,7 +136,7 @@ res_df$RTW_TW=1;
                     res_df$N_favor_full=ifelse(x$favoriteCount>0,1,0);
                     res_df$Nfavor_native=ifelse(x$isRetweet==1,0,res_df$N_favor_full)
                     res_df$N_geo=N_geo
-  
+                    }
   if (nrow(x)==1) { 
                                       return(res_df)
                     
