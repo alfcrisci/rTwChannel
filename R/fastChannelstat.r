@@ -66,23 +66,25 @@ fastChannelstat<-function(x,check_duplicates=FALSE,stream="")
              "most_mentioned","most_retweeted","most_favorited","N_geo")
   res_df=data.frame(t(rep(NA,length(name_one))))
   names(res_df)=name_one
-
+  
   if (stream=="DISIT") {
                            x$screenName=x$twitterUser 
                            x$isRetweet=x$retweet
                            x$text=x$message
   }
   
+  if (nrow(x)==0) { return(res_df)}
+ 
+  N_geo=NA
  
   if ( length(grep("geo_lat",names(x)))==1) { 
         geo_lat=as.vector(x[c("geo_lat")]) 
         N_geo=length(which(geo_lat>0))
   }
   
-  if (check_duplicates==T) {x=x[which(duplicated(x$twitterId)==F),]}
-  
+   
  
-  N_geo=NA
+  
   
   
   if (nrow(x)==1) { 
@@ -118,8 +120,8 @@ fastChannelstat<-function(x,check_duplicates=FALSE,stream="")
                     res_df$N_native_links=ifelse(x$isRetweet==1,0,res_df$N_full_links)
                     res_df$U_native_links=ifelse(x$isRetweet==1,0,res_df$N_full_links)
                     res_df$mostRT_msg_native=x$text
-                    res_df$M_ch_counts_full=as.numeric(nchar(gsub(" ","",x$text)))
-                    res_df$M_ch_counts_native=ifelse(x$isRetweet==1,0,as.numeric(nchar(gsub(" ","",x$text))))
+                    res_df$M_ch_counts_full=mean(as.numeric(nchar(gsub(" ","",x$text))))
+                    res_df$M_ch_counts_native=ifelse(x$isRetweet==1,0,mean(as.numeric(nchar(gsub(" ","",x$text)))))
                     res_df$N_replies=length(grep("^@",x$text))
                     res_df$most_favorited_messages=x$text
                     res_df$most_mentioned=x$text
@@ -132,6 +134,8 @@ fastChannelstat<-function(x,check_duplicates=FALSE,stream="")
                     
                     }
   
+  if (check_duplicates==T) {x=x[which(duplicated(x$twitterId)==F),]}
+ 
   x_native=x[which(x$isRetweet==0),]
   
   res_df$RTW_TW=nrow(x);
@@ -183,8 +187,6 @@ fastChannelstat<-function(x,check_duplicates=FALSE,stream="")
   res_df$N_native_links=NA
   res_df$U_native_links=NA
   res_df$mostRT_msg_native=NA
-  res_df$M_ch_counts_full=NA
-  res_df$M_ch_counts_native=0
   res_df$Nfavor_native=NA
   
   if ( nrow(x_native) > 0) {
@@ -223,8 +225,10 @@ fastChannelstat<-function(x,check_duplicates=FALSE,stream="")
   res_df$mostRT_msg=paste(unique(paste(x$text[which(x$retweetCount == max(x$retweetCount))])),collapse = " ")
   
   
-  res_df$N_replies=length(grep("^@",x$text))
-  res_df$M_ch_counts_full=mean(as.numeric(nchar(gsub(" ","",x$text))))
+  res_df$N_replies=length(grep("^@",x$text));
+  
+  res_df$M_ch_counts_full=mean(as.numeric(nchar(gsub(" ","",x$text))));
+  
   res_df$most_favorited_messages=paste(unique(paste(x$text[which(x$favoriteCount == max(x$favoriteCount))])),collapse = " ")
   res_df$N_favor_full=length(which(x$favoriteCount>0));
   
@@ -238,8 +242,7 @@ fastChannelstat<-function(x,check_duplicates=FALSE,stream="")
   res_df$most_retweeted=try(paste(ind_retweeted_sum$Group.1[which(ind_retweeted_sum$x== max(ind_retweeted_sum$x))],collapse = " "))
   res_df$most_favorited=paste(ind_favorited_sum$Group.1[which(ind_favorited_sum$x== max(ind_favorited_sum$x))],collapse = " ")
   
-  res_df$N_geo=N_geo
-  
+   
   return(res_df)
 
 }
