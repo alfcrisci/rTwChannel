@@ -107,7 +107,7 @@ if (nrow(x)==1) {   res_df$RTW_TW=1;
                     res_df$TW_daily=ifelse(x$isRetweet==1,0,1);
                     res_df$retweetCount=x$retweetCount
                     res_df$favoriteCount=x$favoriteCount
-                    res_df$U_full_users=res_df$N_full_users
+                    res_df$U_full_users=1
                     res_df$N_full_hashtag=length(strsplit(x$hashtagsOnTwitter, "\\s+"))
                     res_df$U_full_hashtag=res_df$N_full_hashtag
                     res_df$N_full_mentions=length(strsplit(x$mentions, "\\s+"))
