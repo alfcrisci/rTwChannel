@@ -62,9 +62,9 @@ fastChannelstat<-function(x,check_duplicates=FALSE,stream="")
    name_one=c("RTW_TW","TW","RTW","ini_date_full","end_date_full","ratioRTW_TW","activity_days",
               "activity_days_native","TW_daily","period_extent","relative_activity","RTW_TW_daily",
               "retweetCount","favoriteCount",
-              "N_native_users","U_native_users","N_native_hashtag","U_native_hashtag",
+              "U_native_users","N_native_hashtag","U_native_hashtag",
               "N_native_mentions","U_native_mentions","N_native_links","U_native_links",
-              "N_full_users","U_full_users","N_full_hashtag","U_full_hashtag",
+              "U_full_users","N_full_hashtag","U_full_hashtag",
               "N_full_mentions","U_full_mentions","N_full_links","U_full_links",
               "mostRT_msg","mostRT_msg_native","N_replies",
               "M_ch_counts_full","M_ch_counts_native", "N_favor_full","Nfavor_native","most_favorited_messages",
@@ -107,7 +107,6 @@ if (nrow(x)==1) {   res_df$RTW_TW=1;
                     res_df$TW_daily=ifelse(x$isRetweet==1,0,1);
                     res_df$retweetCount=x$retweetCount
                     res_df$favoriteCount=x$favoriteCount
-                    res_df$N_full_users=ifelse(x$isRetweet==1,1,0)
                     res_df$U_full_users=res_df$N_full_users
                     res_df$N_full_hashtag=length(strsplit(x$hashtagsOnTwitter, "\\s+"))
                     res_df$U_full_hashtag=res_df$N_full_hashtag
@@ -116,7 +115,6 @@ if (nrow(x)==1) {   res_df$RTW_TW=1;
                     res_df$N_full_links=length(strsplit(x$links, "\\s+"))
                     res_df$U_full_links=res_df$N_full_links
                     res_df$mostRT_msg=x$text
-                    res_df$N_native_users=ifelse(x$isRetweet==1,0,1)
                     res_df$U_native_users=ifelse(x$isRetweet==1,0,1)
                     res_df$N_native_hashtag=ifelse(x$isRetweet==1,0,1)
                     res_df$U_native_hashtag=ifelse(x$isRetweet==1,0,1)
@@ -192,7 +190,6 @@ if (nrow(x)==1) {   res_df$RTW_TW=1;
                           native_users=strsplit(gsub(" NA"," ",do.call(paste, c(as.list(x_native$twitterUser), sep=" "))), "\\s+")
                           native_hashtag=strsplit(gsub(" NA"," ",do.call(paste, c(as.list(x_native$hashtagsOnTwitter), sep=" "))), "\\s+")
  
-                          res_df$N_native_users=suppressWarnings(try(length(native_users[[1]])))
                           res_df$U_native_users=suppressWarnings(try(length(unique(native_users[[1]]))))
                           res_df$N_native_hashtag=suppressWarnings(try(length(native_hashtag[[1]])))
                           res_df$U_native_hashtag=suppressWarnings(try(length(unique(full_hashtag[[1]]))))
@@ -201,13 +198,13 @@ if (nrow(x)==1) {   res_df$RTW_TW=1;
                           res_df$N_native_links=suppressWarnings(try(length(native_links[[1]])))
                           res_df$U_native_links=suppressWarnings(try(length(unique(native_links[[1]]))))
                           res_df$mostRT_msg_native=paste(unique(paste(x$text[which(x_native$retweetCount == max(x$retweetCount))])),collapse = " ")
-                          res_df$M_ch_counts_native=mean(as.numeric(nchar(gsub(" ","",x_native$text))))
+                          if (res_df$retweetCount==0) { res_df$mostRT_msg_native=NA}
+                          res_df$M_ch_counts_native=mean(as.numeric(nchar(gsub(" ","",x_native$text))),na.rm=T)
                           res_df$Nfavor_native=length(which(x_native$favoriteCount>0));
                           
                           
   }
   
-  res_df$N_full_users=length(full_users[[1]])
   res_df$U_full_users=length(unique(full_users[[1]]))
   
   res_df$N_full_hashtag=length(full_hashtag[[1]])
@@ -220,11 +217,12 @@ if (nrow(x)==1) {   res_df$RTW_TW=1;
   res_df$U_full_links=length(unique(full_links[[1]]))
   
   res_df$mostRT_msg=paste(unique(paste(x$text[which(x$retweetCount == max(x$retweetCount))])),collapse = " ")
-  
+   if (res_df$retweetCount==0) { res_df$mostRT_msg=NA}
+ 
   
   res_df$N_replies=length(grep("^@",x$text));
   
-  res_df$M_ch_counts_full=mean(as.numeric(nchar(gsub(" ","",x$text))));
+  res_df$M_ch_counts_full=mean(as.numeric(nchar(gsub(" ","",x$text))),na.rm=T);
   
   res_df$most_favorited_messages=paste(unique(paste(x$text[which(x$favoriteCount == max(x$favoriteCount))])),collapse = " ")
   res_df$N_favor_full=length(which(x$favoriteCount>0));
@@ -238,6 +236,9 @@ if (nrow(x)==1) {   res_df$RTW_TW=1;
   res_df$most_mentioned=gsub("@","",paste(names(ind_mentioned[which(ind_mentioned == max(ind_mentioned)),]),collapse = " "))
   res_df$most_retweeted=try(paste(ind_retweeted_sum$Group.1[which(ind_retweeted_sum$x== max(ind_retweeted_sum$x))],collapse = " "))
   res_df$most_favorited=paste(ind_favorited_sum$Group.1[which(ind_favorited_sum$x== max(ind_favorited_sum$x))],collapse = " ")
+  if (res_df$favoriteCount==0) { res_df$most_favorited=NA}
+  if (res_df$retweetCount==0) { res_df$most_retweeted=NA}
+ 
   res_df$N_geo=N_geo
    
   return(res_df)
