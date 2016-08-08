@@ -6,9 +6,9 @@
 \usage{
 channel_analytic(channel_obj, use_channel_dates = TRUE, start_date = NULL,
   end_date = NULL, Ntop = 11, Nmin = 25, naming = "",
-  only_original_tweet = FALSE, lowercase = TRUE,
-  stopword = tm::stopwords("it"), account_tw = "", corpus_hashtag = TRUE,
-  graph_analisys = FALSE, corpus_analisys = FALSE)
+  only_original_tweet = FALSE, lowercase = TRUE, stopword = "ITA",
+  account_tw = "", corpus_hashtag = TRUE, graph_analisys = FALSE,
+  corpus_analisys = FALSE)
 }
 \arguments{
 \item{channel_obj}{data.frame Dataset of tweets}

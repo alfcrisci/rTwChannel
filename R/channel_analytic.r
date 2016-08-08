@@ -53,12 +53,12 @@
 #'
 
 channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, end_date=NULL,Ntop=11,
-                          Nmin=25,naming="",only_original_tweet=FALSE,lowercase=TRUE,stopword = as.character(tm::stopwords("it")), 
+                          Nmin=25,naming="",only_original_tweet=FALSE,lowercase=TRUE,stopword = "ITA", 
                           account_tw="",corpus_hashtag=TRUE,graph_analisys=FALSE,corpus_analisys=FALSE) 
                           
                           {
-  
-  
+                          
+                      
  
   #####################################################################################
   # Data checks
@@ -425,9 +425,10 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   
   if ( (corpus_analisys==TRUE)) 
                                {
-    
+                               stopwords=stopword;
+                               if ( stopword=="ITA") {stopwords=tm::stopwords(kind = "it")}
                                corpus=getCorpus(channel_obj$text,hashtag=corpus_hashtag)
-                               word_freq_matr=qdap::wfm(corpus,stopwords=stopword)
+                               word_freq_matr=qdap::wfm(corpus,stopwords=stopwords)
                                word_freq_matr=as.data.frame(word_freq_matr)
                                word_freq_matr$word=row.names(word_freq_matr)
                                word_freq_matr=word_freq_matr[c("word","grouping.var")]

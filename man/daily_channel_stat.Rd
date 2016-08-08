@@ -4,12 +4,12 @@
 \alias{daily_channel_stat}
 \title{daily_channel_stat}
 \usage{
-daily_channel_stat(x, stream="")
+daily_channel_stat(x, stream = "")
 }
 \arguments{
 \item{x}{Data.frame Dataset of tweets}
 
-\item{stream}{Character Tye of stream.}
+\item{stream}{Character Type of stream.}
 }
 \value{
 daily_channel_final Data.frame of daily stats performed by \code{fastChannelstat}
