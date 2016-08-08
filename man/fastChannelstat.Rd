@@ -42,8 +42,6 @@ retweetCount  Numeric  Sum of retweets.
 
 favoriteCount  Numeric Sum of favorites.
 
-N_full_users  Numeric Number of full users.
-
 U_full_users  Numeric Number of full unique users.
 
 N_full_hashtag  Numeric  Number of hashtag used.
@@ -59,8 +57,6 @@ N_full_links  Numeric  Number of links.
 U_full_links  Numeric  Number of unique links.
 
 mostRT_msg Character Most retweeted message  ( tweets or retweets).
-
-N_native_users  Numeric  Number of native users.
 
 U_native_users  Numeric  Number of native unique users.
 
