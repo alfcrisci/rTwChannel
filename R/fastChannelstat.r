@@ -19,7 +19,6 @@
 #' @return TW_daily  Numeric Native number of tweets.
 #' @return retweetCount  Numeric  Sum of retweets.
 #' @return favoriteCount  Numeric Sum of favorites.
-#' @return N_full_users  Numeric Number of full users.
 #' @return U_full_users  Numeric Number of full unique users.
 #' @return N_full_hashtag  Numeric  Number of hashtag used.
 #' @return U_full_hashtag  Numeric  Number of unique hashtag used.
@@ -28,7 +27,6 @@
 #' @return N_full_links  Numeric  Number of links.
 #' @return U_full_links  Numeric  Number of unique links.
 #' @return mostRT_msg Character Most retweeted message  ( tweets or retweets).
-#' @return N_native_users  Numeric  Number of native users.
 #' @return U_native_users  Numeric  Number of native unique users.
 #' @return N_native_hashtag  Numeric  Number of hashtag used.
 #' @return U_native_hashtag  Numeric  Number of unique hashtag used.
