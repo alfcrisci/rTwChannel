@@ -232,8 +232,8 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   if ( (length(channel_obj$isRetweet[which(channel_obj$isRetweet==1)]) > 0) && (only_original_tweet==FALSE))  { 
     
     id_retweet=which(channel_obj$isRetweet==1)
-    retweeter_authors=channel_obj$screenName[id_retweet]
-    retweeted_users=unlist(lapply(channel_obj$mentions[id_retweet],function(x) unlist(strsplit(x," "))[1]))
+    retweeter_authors=gsub("^@","",channel_obj$screenName[id_retweet])
+    retweeted_users=gsub("^@","",unlist(lapply(channel_obj$mentions[id_retweet],function(x) unlist(strsplit(x," "))[1])))
     mat_retweet_df=na.omit(data.frame(date=channel_obj$date[id_retweet],message=channel_obj$text[id_retweet],authors=retweeter_authors,retweeted_users=retweeted_users))
     
     }
