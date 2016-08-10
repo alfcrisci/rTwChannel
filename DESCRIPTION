@@ -17,7 +17,8 @@ Imports:
     igraph,
     tm,
     sjPlot,
-    sjmisc,
+    networkD3,
+    htmlwidgets,
     XLConnect,
     stringr,
     lubridate

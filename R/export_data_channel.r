@@ -3,14 +3,16 @@
 #' @description Function to export informative stats  from twitter analytic channel.
 #'
 #' @param  x  Data.frame Channel anlitics.
-#' @param  native  Data.frame Channel anlitics.
-#' @param  graph  Data.frame Channel anlitics.
-#' @param  corpus  Data.frame Channel anlitics.
-#' @param  excel  Data.frame Channel anlitics.
-#' @param  csv  Data.frame Channel anlitics.
-#' @param  filterdegree Data.frame Channel anlitics.
-#' @param  export_graph Data.frame Channel anlitics.
-#' @param  format_graph  Character 
+#' @param  anme  character Label of stream.
+#' @param  native  logical If data are data native where retweet are not considered.
+#' @param  graph  logical It works on graph data.
+#' @param  corpus  logical It exports word frequency matrix.
+#' @param  excel  logical It exports excel.
+#' @param  csv  logical It exports csv.
+#' @param  filterdegree numeric Filter level of graph.
+#' @param  saaveres logical It exports results in list.
+#' @param  export_graph logical It exports graph.
+#' @param  format_graph  character Format of graph exported.Default is graphml.
 #' @return List and exports file
 #'
 #' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
@@ -59,15 +61,15 @@ export_data_channel=function(x,name,native=F,graph=T,corpus=F,excel=TRUE,csv=FAL
                                    closeness=as.numeric(igraph::closeness(x$graph_mentions)),
                                    eigenvector=as.numeric(igraph::eigen_centrality(x$graph_mentions)$vector))
     
-    writeWorksheetToFile(paste0("mentions_graph_centrality_",name,".xls"), data=centrality_mentions, sheet="mentions_g_par")
+    XLConnect::writeWorksheetToFile(paste0("mentions_graph_centrality_",name,".xls"), data=centrality_mentions, sheet="mentions_g_par")
     
     
     graph_mentions_codified_full=x$graph_mentions
-    V(graph_mentions_codified_full)$size=degree(graph_mentions_codified_full)
-    deg <- degree(graph_mentions_codified_full, mode = "in")
+    V(graph_mentions_codified_full)$size=igraph::degree(graph_mentions_codified_full)
+    deg <- igraph::degree(graph_mentions_codified_full, mode = "in")
     idx <- names(which(deg > filterdegree))
-    graph_mentions_codified_full <- induced.subgraph(graph_mentions_codified_full, idx)
-    gd <- get.data.frame(graph_mentions_codified_full, what = "edges")
+    graph_mentions_codified_full <- igraph::induced.subgraph(graph_mentions_codified_full, idx)
+    gd <- igraph::get.data.frame(graph_mentions_codified_full, what = "edges")
     a=networkD3::simpleNetwork(gd, fontSize = 12)
     htmlwidgets::saveWidget(a,paste0("mention_graph_",name,".html"))
     
@@ -81,15 +83,15 @@ export_data_channel=function(x,name,native=F,graph=T,corpus=F,excel=TRUE,csv=FAL
                                     closeness=as.numeric(igraph::closeness(x$graph_retweet)),
                                     eigenvector=as.numeric(igraph::eigen_centrality(x$graph_retweet)$vector))
       
-      writeWorksheetToFile(paste0("retweet_graph_centrality_",name,".xls"), data=centrality_retweet, sheet="retweet_g_par")
+      XLConnect::writeWorksheetToFile(paste0("retweet_graph_centrality_",name,".xls"), data=centrality_retweet, sheet="retweet_g_par")
       
       graph_retweet_codified_full=x$graph_retweet
-      V(graph_retweet_codified_full)$size=degree(graph_retweet_codified_full)
-      deg <- degree(graph_retweet_codified_full, mode = "in")
+      V(graph_retweet_codified_full)$size=igraph::degree(graph_retweet_codified_full)
+      deg <- igraph::degree(graph_retweet_codified_full, mode = "in")
       idx <- names(which(deg > filterdegree))
-      graph_retweet_codified_full <- induced.subgraph(graph_retweet_codified_full, idx)
-      if (export_graph==T) {write_graph(graph_retweet_codified_full, file=paste0("retweet_graph_",name,".graphml"),paste0("mention_graph_",name,".html"))}
-      gd <- get.data.frame(graph_retweet_codified_full, what = "edges")
+      graph_retweet_codified_full <- igraph::induced.subgraph(graph_retweet_codified_full, idx)
+      if (export_graph==T) {igraph::write_graph(graph_retweet_codified_full, file=paste0("retweet_graph_",name,".graphml"),paste0("mention_graph_",name,".html"))}
+      gd <- igraph::get.data.frame(graph_retweet_codified_full, what = "edges")
       a=networkD3::simpleNetwork(gd, fontSize = 12)
       htmlwidgets::saveWidget(a,paste0("retweet_graph_",name,".html"))
       
