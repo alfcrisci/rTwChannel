@@ -83,7 +83,7 @@ fastChannelstat<-function(x,check_duplicates=FALSE,stream="")
   N_geo=0
  
   if ( length(grep("geo_lat",names(x)))==1) { 
-         N_geo=as.numeric(length(which(as.numeric(x$geo_lat>0)==T)));
+         N_geo=as.numeric(length(which(as.numeric(x$geo_lat)>0)==T));
   }
   
    
