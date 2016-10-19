@@ -244,7 +244,7 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   id=which(channel_obj$mentions!="")
   mat_mentions=na.omit(data.frame(date=channel_obj$date[id],whomentions=channel_obj$screenName[id],mentioned=gsub("@","",channel_obj$mentions[id]),stringsAsFactors = F))
   
-  if (nrow(mat_mention)>0) {                                             
+  if (nrow(mat_mentions)>0) {                                             
   mat_mentions_df=do.call("rbind",apply(mat_mentions,1,FUN=function(x) data.frame(expand.grid(x[1],x[2],as.character(unlist(strsplit(x[3]," ")),stringsAsFactors = F)))))
   names(mat_mentions_df)=c("date","whomention","whomentioned")
   }
