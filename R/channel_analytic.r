@@ -348,36 +348,68 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   
   
   ##########################################################################
-
-  table_authors=as.data.frame.array(sort(table(tolower(channel_obj$screenName)),decreasing=T))
-  table_authors=data.frame(authors=rownames(table_authors),
+  if (length(channel_obj$screenName) >1) {
+      table_authors=as.data.frame.array(sort(table(tolower(channel_obj$screenName)),decreasing=T))
+      table_authors=data.frame(authors=rownames(table_authors),
                            Freq=as.vector(table_authors))
-  names(table_authors)<-c("author","freq")
-  rownames(table_authors)<-NULL
-  
-
-  
+      names(table_authors)<-c("author","freq")
+      rownames(table_authors)<-NULL
+  }
+  else { 
+      table_authors=data.frame(authors=channel_obj$screenName,
+                               Freq=1)
+      names(table_authors)<-c("author","freq")
+      rownames(table_authors)<-NULL
+  }
+    
   ##########################################################################
+  if (length(mat_hashtag_df$hashtag) >1) {
   
   table_hash=as.data.frame.array(sort(table(tolower(mat_hashtag_df$hashtag)),decreasing=T))
   table_hash=data.frame(hashtag=rownames(table_hash),
                         Freq=as.vector(table_hash))
   names(table_hash)<-c("hashtag","freq")
   rownames(table_hash)<-NULL
-  
+  }
+  else { 
+  table_hash=data.frame(hashtag=mat_hashtag_df$hashtag,
+                        Freq=1)
+  names(table_hash)<-c("hashtag","freq")
+  rownames(table_hash)<-NULL
+  }
   ##########################################################################
+  if (length(mat_hashtag_df$whomentioned) >1) {
   
   table_mentions=as.data.frame.array(sort(table(mat_mentions_df$whomentioned),decreasing=T))
   table_mentions=data.frame(users=rownames(table_mentions),
                             Freq=as.vector(table_mentions))
   names(table_mentions)<-c("mention","freq")
   rownames(table_mentions)<-NULL
+    }
+  else { 
+  table_mentions=data.frame(users=mat_mentions_df$whomentioned,
+                            Freq=1)
+  names(table_mentions)<-c("mention","freq")
+  rownames(table_mentions)<-NULL
+    }
   
+  ##########################################################################
+  if (length(mat_links_df$links) >1) {
+   
+    
   table_links=as.data.frame.array(sort(table(mat_links_df$links),decreasing=T))
   table_links=data.frame(users=rownames(table_links),
                             Freq=as.vector(table_links))
-  names(table_links)<-c("mention","freq")
+  names(table_links)<-c("links","freq")
   rownames(table_links)<-NULL
+    }
+  else { 
+  table_links=data.frame(users=rownames(table_links),
+                            Freq=as.vector(table_links))
+  names(table_links)<-c("links","freq")
+  rownames(table_links)<-NULL
+    }    
+      
  
   ##########################################################################
   # Graph analitics
