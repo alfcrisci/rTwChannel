@@ -291,7 +291,7 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
                             message=NA,
                             authors=NA,
                             favoriteCount=0,
-                            is.retweet=NA                    
+                            is.retweet=NA)                    
          }
     
   
