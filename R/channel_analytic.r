@@ -354,8 +354,7 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
                            Freq=as.vector(table_authors))
       names(table_authors)<-c("author","freq")
       rownames(table_authors)<-NULL
-  }
-  else { 
+  }  else { 
       table_authors=data.frame(authors=channel_obj$screenName,
                                Freq=1)
       names(table_authors)<-c("author","freq")
@@ -370,8 +369,7 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
                         Freq=as.vector(table_hash))
   names(table_hash)<-c("hashtag","freq")
   rownames(table_hash)<-NULL
-  }
-  else { 
+  } else { 
   table_hash=data.frame(hashtag=mat_hashtag_df$hashtag,
                         Freq=1)
   names(table_hash)<-c("hashtag","freq")
@@ -385,8 +383,7 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
                             Freq=as.vector(table_mentions))
   names(table_mentions)<-c("mention","freq")
   rownames(table_mentions)<-NULL
-    }
-  else { 
+    } else { 
   table_mentions=data.frame(users=mat_mentions_df$whomentioned,
                             Freq=1)
   names(table_mentions)<-c("mention","freq")
@@ -402,8 +399,7 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
                             Freq=as.vector(table_links))
   names(table_links)<-c("links","freq")
   rownames(table_links)<-NULL
-    }
-  else { 
+    } else { 
   table_links=data.frame(users=rownames(table_links),
                             Freq=as.vector(table_links))
   names(table_links)<-c("links","freq")
