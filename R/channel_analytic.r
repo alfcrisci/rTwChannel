@@ -280,12 +280,20 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   id=which(channel_obj$favoriteCount>0)
   N_favorited=length(id)
   
+  if (  N_favorited > 0) {
   ls_favorite_df=data.frame(date=channel_obj$date[id],
                             message=channel_obj$text[id],
                             authors=channel_obj$screenName[id],
                             favoriteCount=channel_obj$favoriteCount[id],
                             is.retweet=channel_obj$isRetweet[id])[order(-as.numeric(channel_obj$favoriteCount[id])),]
-  
+                            } else {
+                            ls_favorite_df=data.frame(date=NA,
+                            message=NA,
+                            authors=NA,
+                            favoriteCount=0,
+                            is.retweet=NA                    
+         }
+    
   
   
   ls_message_df=data.frame(data=channel_obj$date,
@@ -303,12 +311,22 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   rank_message_retweeted=data.frame(message=NA,SumretweetCount=NA)
   rank_authors_retweeted=data.frame(message=NA,SumretweetCount=NA)
   table_retweeter=data.frame(author_retweeter=NA,freq=NA)
-  
+   if (  N_favorited > 0) {
+ 
   rank_authors_favorited=aggregate(as.numeric(ls_favorite_df$favoriteCount),list(ls_favorite_df$authors),sum)
   rank_authors_favorited=rank_authors_favorited[order(-rank_authors_favorited[,2]),]
-  
-  names(rank_authors_favorited)<-c("authors","SumfavoriteCount")
-  
+   names(rank_authors_favorited)<-c("authors","SumfavoriteCount")
+     
+  } else {
+   
+   
+      rank_authors_favorited=data.frame(authors=NA,SumfavoriteCount=0)
+   
+   
+   }
+                                                      
+                                                      
+ 
   
  
  ################################################################################
