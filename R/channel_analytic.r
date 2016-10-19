@@ -243,20 +243,26 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   
   id=which(channel_obj$mentions!="")
   mat_mentions=na.omit(data.frame(date=channel_obj$date[id],whomentions=channel_obj$screenName[id],mentioned=gsub("@","",channel_obj$mentions[id]),stringsAsFactors = F))
+  
+  if (nrow(mat_mention)>0) {                                             
   mat_mentions_df=do.call("rbind",apply(mat_mentions,1,FUN=function(x) data.frame(expand.grid(x[1],x[2],as.character(unlist(strsplit(x[3]," ")),stringsAsFactors = F)))))
   names(mat_mentions_df)=c("date","whomention","whomentioned")
-
+  }
   id=which(channel_obj$hashtagsOnTwitter!="")
   mat_hashtag=na.omit(data.frame(date=channel_obj$date[id],whohashtag=channel_obj$screenName[id],hashtags=channel_obj$hashtagsOnTwitter[id],stringsAsFactors = F))
+  if (nrow(mat_hashtag)>0) {                                             
+  
   mat_hashtag_df=do.call("rbind",apply(mat_hashtag,1,FUN=function(x) data.frame(expand.grid(x[1],x[2],as.character(unlist(strsplit(x[3]," ")),stringsAsFactors = F)))))
   names(mat_hashtag_df)=c("date","whohashtag","hashtag")
-  
+  }
   
   id=which(channel_obj$links!="")
   mat_links=na.omit(data.frame(date=channel_obj$date[id],wholinks=channel_obj$screenName[id],links=channel_obj$links[id]),stringsAsFactors = F)
-  mat_links_df=do.call("rbind",apply(mat_links,1,FUN=function(x) data.frame(expand.grid(x[1],x[2],as.character(unlist(strsplit(x[3]," ")),stringsAsFactors = F)))))
+   if (nrow(mat_links)>0) {                                             
+   mat_links_df=do.call("rbind",apply(mat_links,1,FUN=function(x) data.frame(expand.grid(x[1],x[2],as.character(unlist(strsplit(x[3]," ")),stringsAsFactors = F)))))
   names(mat_links_df)=c("date","wholinks","links")
-  
+  }
+                                      
   message("Text message are processed!\n") 
   
   
