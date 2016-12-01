@@ -9,10 +9,9 @@
 #'
 #' @references  qdap R packages
 #
-#'
+#' @importFrom qdapRegex rm_url
 #' @export
 
 extract_links=function(x) {
-   res=qdapRegex::rm_url(res,extract=T)
-  return(res)
+   rm_url(res,extract=T)
 }
