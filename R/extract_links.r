@@ -5,7 +5,7 @@
 #' @param  x   Character  Messages of channel's tweets.
 #' @return     Return the list of mentioned users
 #' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
-#' @keywords  mentions
+#' @keywords  links
 #'
 #' @references  qdap R packages
 #
@@ -13,5 +13,6 @@
 #' @export
 
 extract_links=function(x) {
-   rm_url(res,extract=T)
+   res=rm_url(x,extract=T)
+   return(res)
 }
