@@ -66,17 +66,7 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   if ((naming == "account_analitics") &&   (account_tw == "") ) { stop("Channel analitics need an Twitter account!")};
   
   if ( naming == "account_analitics")  {message(paste("Account Twitter:",account_tw,"\n"))}
-  #####################################################################################
-  # Create sequence of dates
-  
-  seq_date_channel=seq(as.Date(range(channel_obj$date)[1]),as.Date(range(channel_obj$date)[2]),by=1)
-  rangeseq=range(seq_date_channel)
-  
-  if (use_channel_dates==TRUE) { start_date=rangeseq[1]; end_date=rangeseq[2]};
-  
-  if (((class(as.Date(start_date))!="Date") ||  (class(as.Date(end_date))!="Date")) & (use_channel_dates==FALSE)) { stop("Start or Ending date to be defined!")};
-  
-  if (as.Date(start_date) > as.Date(end_date)) { stop(" End Date is older than Start date! ")};
+ 
   
   
   ##############################################################################################################
@@ -198,7 +188,18 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
     
   }
   
- 
+  #####################################################################################
+  # Create sequence of dates
+  
+  seq_date_channel=seq(as.Date(range(channel_obj$date)[1]),as.Date(range(channel_obj$date)[2]),by=1)
+  rangeseq=range(seq_date_channel)
+  
+  if (use_channel_dates==TRUE) { start_date=rangeseq[1]; end_date=rangeseq[2]};
+  
+  if (((class(as.Date(start_date))!="Date") ||  (class(as.Date(end_date))!="Date")) & (use_channel_dates==FALSE)) { stop("Start or Ending date to be defined!")};
+  
+  if (as.Date(start_date) > as.Date(end_date)) { stop(" End Date is older than Start date! ")};
+                                                
   #####################################################################################
   # Impose date time ordering
   
