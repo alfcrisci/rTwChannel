@@ -151,28 +151,31 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   
 
     
-  if ( naming == "twitter") {
+  if ( naming == "rtweet") {
     
-    channel_obj$twitterId=as.numeric(channel_obj$id)
-    channel_obj$date=as.Date(channel_obj$created)
-    channel_obj$hour=lubridate::hour(channel_obj$created)
-    channel_obj$month=lubridate::month(channel_obj$created)
-    channel_obj$text=gsub("[\x80-\xFF]","",x$text)
-    channel_obj$isRetweet=as.numeric(channel_obj$isRetweet)
-    channel_obj$publicationTime=channel_obj$created
-    channel_obj$mentions=unlist(lapply(extract_mentions(x$text),function(x) paste(x,collapse = " ")))
-    channel_obj$links=unlist(lapply(extract_links(x$text),function(x) paste(x,collapse = " ")))
-    channel_obj$hashtagsOnTwitter=unlist(lapply(extract_hashtag(x$text),function(x) paste(x,collapse = " ")))
-    channel_obj$locationUser=NA
-    channel_obj$place=NA
-    channel_obj$time_zone=NA
-    channel_obj$class_users=NA
-    channel_obj$class_hashtag=NA
-    channel_obj$class_message=NA
-    channel_obj$class_custom=NA
-    channel_obj$geo_lat=as.numeric(channel_obj$latitude)
-    channel_obj$geo_long=as.numeric(channel_obj$longitude)
-    
+     channel_obj$twitterId = as.numeric(channel_obj$status_id)
+     channel_obj$date = as.Date(channel_obj$created_at)
+     channel_obj$hour = lubridate::hour(channel_obj$created_at)
+     channel_obj$month = lubridate::month(channel_obj$created_at)
+     channel_obj$text = gsub("[\x80-\xff]", "", channel_obj$text)
+     channel_obj$isRetweet = as.numeric(channel_obj$is_retweet)
+     channel_obj$publicationTime = channel_obj$created_at
+     channel_obj$mentions = unlist(lapply(extract_mentions(channel_obj$ext), 
+                                       function(x) paste(x, collapse = " ")))
+     channel_obj$links = unlist(lapply(extract_links(channel_obj$text), 
+                                    function(x) paste(x, collapse = " ")))
+     channel_obj$hashtagsOnTwitter = unlist(lapply(extract_hashtag(channel_obj$text), 
+                                                function(x) paste(x, collapse = " ")))
+     channel_obj$locationUser = NA
+     channel_obj$place = channel_obj$place_name
+     channel_obj$time_zone = NA
+     channel_obj$class_users = NA
+     channel_obj$class_hashtag = NA
+     channel_obj$class_message = NA
+     channel_obj$class_custom = NA
+     channel_obj$geo_long = as.numeric(channel_obj$coordinates[,1])
+     channel_obj$geo_lat = as.numeric(channel_obj$coordinates[,5])
+  
   }
   
   if (naming == "account_analitics")
