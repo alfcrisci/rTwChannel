@@ -152,6 +152,8 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
      channel_obj$text = gsub("[\x80-\xff]", "", channel_obj$text)
      channel_obj$isRetweet = as.numeric(channel_obj$is_retweet)
      channel_obj$publicationTime = channel_obj$created_at
+     channel_obj$retweetCount=channel_obj$retweet_count
+     channel_obj$favoriteCount=channel_obj$favorite_count
      channel_obj$mentions = unlist(lapply(extract_mentions(channel_obj$text), 
                                        function(x) paste(x, collapse = " ")))
      channel_obj$links = unlist(lapply(extract_links(channel_obj$text), 
