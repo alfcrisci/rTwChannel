@@ -86,7 +86,7 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
     channel_obj$created <- lubridate::dmy_hms(channel_obj$time)
     channel_obj=channel_obj[which(!is.na(channel_obj$created)),]
     channel_obj$date <- as.Date(lubridate::dmy_hms(channel_obj$created))
-    channel_obj$screeName=channel_obj$from_user
+    channel_obj$screenName=channel_obj$from_user
     channel_obj$id=as.numeric(channel_obj$id_str)
     channel_obj$twitterId=as.numeric(channel_obj$id_str)
     channel_obj$lang=channel_obj$user_lang
@@ -146,13 +146,13 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
      channel_obj$screen_name=NULL
      channel_obj$twitterId = as.numeric(channel_obj$status_id)
      channel_obj$status_id=NULL
-      channel_obj$date = as.Date(channel_obj$created_at)
+     channel_obj$date = as.Date(channel_obj$created_at)
      channel_obj$hour = lubridate::hour(channel_obj$created_at)
      channel_obj$month = lubridate::month(channel_obj$created_at)
      channel_obj$text = gsub("[\x80-\xff]", "", channel_obj$text)
      channel_obj$isRetweet = as.numeric(channel_obj$is_retweet)
      channel_obj$publicationTime = channel_obj$created_at
-     channel_obj$mentions = unlist(lapply(extract_mentions(channel_obj$ext), 
+     channel_obj$mentions = unlist(lapply(extract_mentions(channel_obj$text), 
                                        function(x) paste(x, collapse = " ")))
      channel_obj$links = unlist(lapply(extract_links(channel_obj$text), 
                                     function(x) paste(x, collapse = " ")))
