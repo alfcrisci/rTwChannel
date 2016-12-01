@@ -9,11 +9,11 @@
 #'
 #' @references  qdap R packages
 #
-#'
+#' @importFrom qdapRegex rm_hash
 #' @export
 
 extract_hashtag=function(x) {
   res=strip(x, digit.remove = FALSE,char.keep = c("_","#"))
-  res=qdapRegex::rm_hash(res,extract=T)
+  res=rm_hash(res,extract=T)
   return(res)
 }
