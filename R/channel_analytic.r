@@ -142,9 +142,11 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
 
     
   if ( naming == "rtweet") {
-    
+     channel_obj$screenName=channel_obj$screen_name;
+     channel_obj$screen_name=NULL
      channel_obj$twitterId = as.numeric(channel_obj$status_id)
-     channel_obj$date = as.Date(channel_obj$created_at)
+     channel_obj$status_id=NULL
+      channel_obj$date = as.Date(channel_obj$created_at)
      channel_obj$hour = lubridate::hour(channel_obj$created_at)
      channel_obj$month = lubridate::month(channel_obj$created_at)
      channel_obj$text = gsub("[\x80-\xff]", "", channel_obj$text)
