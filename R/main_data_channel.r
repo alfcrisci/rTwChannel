@@ -16,7 +16,7 @@
 #'
 #'
 #' @importFrom XLConnect writeWorksheetToFile
-#' @importFrom i_graph  induced.subgraph degree betweenness closeness eigen_centrality get.data.frame write.graph
+#' @importFrom igraph  induced.subgraph degree betweenness closeness eigen_centrality get.data.frame write.graph
 #' @importFrom networkD3 simpleNetwork
 #' @importFrom htmlwidgets saveWidget
 #' @export
