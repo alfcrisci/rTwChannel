@@ -14,7 +14,8 @@
 #' @keywords  annotation
 #'
 #'
-#'
+#' @importFrom XLConnect writeWorksheetToFile
+#' @importFrom sjPlot sjt.df
 #' @export
 #'
 #'
@@ -47,7 +48,8 @@ channel_outputs=function(stat_obj, param="channel_stat", suffix_file="LIG", na_s
                   channel_data=22,
                   account_stats=23,
                   channel_corpus=24,
-                  word_freq_matr=25
+                  word_freq_matr=25,
+                  users_channel=26 
                   )
   
   
@@ -60,13 +62,13 @@ channel_outputs=function(stat_obj, param="channel_stat", suffix_file="LIG", na_s
   
   if ( html == TRUE) {
     
-    sjPlot::sjt.df(res,stringVariable = param,describe=FALSE,alternateRowColors = TRUE,file=paste0(param,"_",suffix_file,".html"))
+    sjt.df(res,stringVariable = param,describe=FALSE,alternateRowColors = TRUE,file=paste0(param,"_",suffix_file,".html"))
     
   }
   
   if ( excel == TRUE) {
     
-    XLConnect::writeWorksheetToFile(paste0(suffix_file,"_",param,".xls"), res, sheet=paste0(suffix_file))
+    writeWorksheetToFile(paste0(suffix_file,"_",param,".xls"), res, sheet=paste0(suffix_file))
     
   }
   
