@@ -47,7 +47,8 @@
 #' @keywords  channel,stats
 #'
 #'
-#'
+#' @importFrom igraph graph.edgelist simplify
+#' @importFrom lubridate dmy_hms month hour
 #' @export
 #'
 #'
@@ -83,9 +84,9 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   
   if ( naming == "TAGS") {
     channel_obj$text=gsub("[\x80-\xFF]","",channel_obj$message) # remove multibyte
-    channel_obj$created <- lubridate::dmy_hms(channel_obj$time)
+    channel_obj$created <- dmy_hms(channel_obj$time)
     channel_obj=channel_obj[which(!is.na(channel_obj$created)),]
-    channel_obj$date <- as.Date(lubridate::dmy_hms(channel_obj$created))
+    channel_obj$date <- as.Date(dmy_hms(channel_obj$created))
     channel_obj$screenName=channel_obj$from_user
     channel_obj$id=as.numeric(channel_obj$id_str)
     channel_obj$twitterId=as.numeric(channel_obj$id_str)
@@ -102,8 +103,8 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
     channel_obj$publicationTime <- channel_obj$time
     channel_obj$time<-NULL
     channel_obj=channel_obj[rev(1:nrow(channel_obj)),]
-    channel_obj$hour=lubridate::hour(lubridate::ymd_hms(channel_obj$publicationTime))
-    channel_obj$month=lubridate::month(lubridate::ymd_hms(channel_obj$publicationTime))
+    channel_obj$hour=hour(lubridate::ymd_hms(channel_obj$publicationTime))
+    channel_obj$month=month(lubridate::ymd_hms(channel_obj$publicationTime))
     channel_obj$mentions=unlist(lapply(extract_mentions(x$text),function(x) paste(x,collapse = " ")))
     channel_obj$links=unlist(lapply(extract_links(x$text),function(x) paste(x,collapse = " ")))
     channel_obj$hashtagsOnTwitter=unlist(lapply(extract_hashtag(x$text),function(x) paste(x,collapse = " ")))
@@ -128,8 +129,8 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
     channel_obj$created=channel_obj$publicationTime
     channel_obj$id=channel_obj$twitterId
     channel_obj$message<-NULL
-    channel_obj$hour=lubridate::hour(lubridate::ymd_hms(channel_obj$publicationTime))
-    channel_obj$month=lubridate::month(lubridate::ymd_hms(channel_obj$publicationTime))
+    channel_obj$hour=hour(lubridate::ymd_hms(channel_obj$publicationTime))
+    channel_obj$month=month(lubridate::ymd_hms(channel_obj$publicationTime))
     channel_obj$isRetweet=channel_obj$retweet
     channel_obj$retweet<-NULL
     channel_obj$class_users=NA
@@ -147,8 +148,8 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
      channel_obj$twitterId = as.numeric(channel_obj$status_id)
      channel_obj$status_id=NULL
      channel_obj$date = as.Date(channel_obj$created_at)
-     channel_obj$hour = lubridate::hour(channel_obj$created_at)
-     channel_obj$month = lubridate::month(channel_obj$created_at)
+     channel_obj$hour = hour(channel_obj$created_at)
+     channel_obj$month = month(channel_obj$created_at)
      channel_obj$text = gsub("[\x80-\xff]", "", channel_obj$text)
      channel_obj$isRetweet = as.numeric(channel_obj$is_retweet)
      channel_obj$publicationTime = channel_obj$created_at
@@ -182,8 +183,8 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
                                "followsCount","email_send","tel_calls","mediaVisCount","interVisCount") 
     names(channel_obj)=name_user_tweet_activity
     channel_obj$date=as.Date(channel_obj$dateTime)
-    channel_obj$hour=lubridate::hour(channel_obj$dateTime)
-    channel_obj$month=lubridate::month(channel_obj$dateTime)
+    channel_obj$hour=hour(channel_obj$dateTime)
+    channel_obj$month=month(channel_obj$dateTime)
     channel_obj$screenName=account_tw
     channel_obj$text=gsub("[\x80-\xFF]","",x$text)
     channel_obj$mentions=unlist(lapply(extract_mentions(x$text),function(x) paste(x,collapse = " ")))
@@ -453,9 +454,9 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   # Create a mention graph
   mat_mentions_df=na.omit(mat_mentions_df)
   mat_men_graph=data.frame(whomention=as.character(mat_mentions_df$whomention),whomentioned=as.character(mat_mentions_df$whomentioned))
-  men_graph = igraph::graph.edgelist(as.matrix(mat_men_graph))
+  men_graph = graph.edgelist(as.matrix(mat_men_graph))
   E(men_graph )$weight <- 1
-  men_graph <- igraph::simplify(men_graph,edge.attr.comb = list(weight = "sum", function(x)length(x)))
+  men_graph <- simplify(men_graph,edge.attr.comb = list(weight = "sum", function(x)length(x)))
   E(men_graph)$weight
   }
   
@@ -470,9 +471,9 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
                                        {
                                       mat_retweet_df=na.omit(mat_retweet_df)
                                       rt_graph=data.frame(whoretweet=as.character(mat_retweet_df$authors),whomentioned=as.character(mat_retweet_df$retweeted_users))
-                                      rt_graph = igraph::graph.edgelist(as.matrix(rt_graph))
+                                      rt_graph = graph.edgelist(as.matrix(rt_graph))
                                       E(rt_graph )$weight <- 1
-                                      rt_graph <- igraph::simplify(rt_graph,edge.attr.comb = list(weight = "sum", function(x)length(x)))
+                                      rt_graph <- simplify(rt_graph,edge.attr.comb = list(weight = "sum", function(x)length(x)))
                                       }
                                      }
 
@@ -529,8 +530,13 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
            channel_data=channel_obj,
            account_stats=NULL,
            channel_corpus=corpus,
-           word_freq_matr=word_freq_matr)
+           word_freq_matr=word_freq_matr
+           users_data=NULL)
   
+  if (naming=="rtweet")     { res$users_data=attr(x$channel_data,"users")
+                                res$channel_data=data.frame(res$channel_data[,names(res$channel_data)]);
+                              }
+                                                                                          
   if (naming=="account_statistics") 
     
   { stats_activity=aggregate(channel_obj[,5:22], list(channel_obj$data), sum)
