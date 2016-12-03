@@ -447,16 +447,17 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   men_graph=NULL
   
   if ( graph_analisys==TRUE) {
-  
+ 
+  if ((length(which(!is.na(mat_mentions_df$whomention)))>0)  {
   ############################################################################################################
   # Create a mention graph
- 
+  mat_mentions_df=na.omit(mat_mentions_df)
   mat_men_graph=data.frame(whomention=as.character(mat_mentions_df$whomention),whomentioned=as.character(mat_mentions_df$whomentioned))
   men_graph = igraph::graph.edgelist(as.matrix(mat_men_graph))
   E(men_graph )$weight <- 1
   men_graph <- igraph::simplify(men_graph,edge.attr.comb = list(weight = "sum", function(x)length(x)))
   E(men_graph)$weight
-  
+  }
   
    
   ############################################################################################################
@@ -465,8 +466,9 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   
   if (naming!="account_statistics") {
    
-           if ((only_original_tweet==FALSE) & (length(mat_retweet_df$authors)>0)) 
+           if ((only_original_tweet==FALSE) & (length(which(!is.na(mat_retweet_df$authors)))>0)) 
                                        {
+                                      mat_retweet_df=na.omit(mat_retweet_df)
                                       rt_graph=data.frame(whoretweet=as.character(mat_retweet_df$authors),whomentioned=as.character(mat_retweet_df$retweeted_users))
                                       rt_graph = igraph::graph.edgelist(as.matrix(rt_graph))
                                       E(rt_graph )$weight <- 1
