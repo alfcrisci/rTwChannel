@@ -97,12 +97,12 @@ main_data_channel=function(x,name,native=F,graph=T,corpus=F,users=T,data=T,csv=F
     
     if ( native ==FALSE) {
       
-      centrality_retweet=data.frame(users=names(igraph::degree(x$graph_retweet, mode='in')),
-                                    indegree=as.numeric(igraph::degree(x$graph_retweet, mode='in')),
-                                    outdegree=as.numeric(igraph::degree(x$graph_retweet, mode='out')),
-                                    betweenness=as.numeric(igraph::betweenness(x$graph_retweet)),
-                                    closeness=as.numeric(igraph::closeness(x$graph_retweet)),
-                                    eigenvector=as.numeric(igraph::eigen_centrality(x$graph_retweet)$vector))
+      centrality_retweet=data.frame(users=names(degree(x$graph_retweet, mode='in')),
+                                    indegree=as.numeric(degree(x$graph_retweet, mode='in')),
+                                    outdegree=as.numeric(degree(x$graph_retweet, mode='out')),
+                                    betweenness=as.numeric(betweenness(x$graph_retweet)),
+                                    closeness=as.numeric(closeness(x$graph_retweet)),
+                                    eigenvector=as.numeric(eigen_centrality(x$graph_retweet)$vector))
       res[[14]]=centrality_retweet
     
       if ( graph_files == T) 
