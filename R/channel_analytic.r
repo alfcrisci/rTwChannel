@@ -533,7 +533,7 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
            word_freq_matr=word_freq_matr,
            users_data=NULL)
   
-  if (naming=="rtweet")     { res$users_data=attr(x$channel_data,"users")
+  if (naming=="rtweet")     { res$users_data=attr(res$channel_data,"users")
                               res$channel_data=data.frame(res$channel_data[,names(res$channel_data)]);
                               }
                                                                                           
