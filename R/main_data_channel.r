@@ -28,9 +28,7 @@ main_data_channel=function(x,name,native=F,graph=T,corpus=F,users=T,data=T,csv=F
   if ( native==F) {name=paste0(name,"_F")}
   if ( native==T) {name=paste0(name,"_N")}
 
-  if ( users==T) {
-                  writeWorksheetToFile(file=paste0("users_channel_",name,".xls"), x$users_channel, sheet=paste("users_channel",name))
-                  }
+  
 
   
   res=list()
@@ -57,8 +55,13 @@ main_data_channel=function(x,name,native=F,graph=T,corpus=F,users=T,data=T,csv=F
   res[[12]]=NULL
   if ( data==T) {                   
                 writeWorksheetToFile(file=paste0("data_channel_",name,".xls"), x$channel_data, sheet=paste("data_channel",name))
-                res[[12]]=users_channel 
+                
                 }
+ 
+   if ( users==T) {
+                  writeWorksheetToFile(file=paste0("users_channel_",name,".xls"), x$users_data, sheet=paste("users_channel",name))
+                  res[[12]]=x$users_data
+                  }
    res[[13]]=NULL
    res[[14]]=NULL
 
@@ -73,6 +76,7 @@ main_data_channel=function(x,name,native=F,graph=T,corpus=F,users=T,data=T,csv=F
                                    closeness=as.numeric(igraph::closeness(x$graph_mentions)),
                                    eigenvector=as.numeric(igraph::eigen_centrality(x$graph_mentions)$vector))
     res[[13]]=centrality_mentions
+   
     if ( graph_files == T) 
         {
           writeWorksheetToFile(paste0("mentions_graph_centrality_",name,".xls"), data=centrality_mentions, sheet="mentions_g_par")
