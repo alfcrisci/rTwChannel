@@ -449,7 +449,7 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   
   if ( graph_analisys==TRUE) {
  
-  if ((length(which(!is.na(mat_mentions_df$whomention)))>0)  {
+  if ((length(which(!is.na(mat_mentions_df$whomention))))>0)  {
   ############################################################################################################
   # Create a mention graph
   mat_mentions_df=na.omit(mat_mentions_df)
@@ -530,11 +530,11 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
            channel_data=channel_obj,
            account_stats=NULL,
            channel_corpus=corpus,
-           word_freq_matr=word_freq_matr
+           word_freq_matr=word_freq_matr,
            users_data=NULL)
   
   if (naming=="rtweet")     { res$users_data=attr(x$channel_data,"users")
-                                res$channel_data=data.frame(res$channel_data[,names(res$channel_data)]);
+                              res$channel_data=data.frame(res$channel_data[,names(res$channel_data)]);
                               }
                                                                                           
   if (naming=="account_statistics") 
