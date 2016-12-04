@@ -457,7 +457,7 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   men_graph = graph.edgelist(as.matrix(mat_men_graph))
   E(men_graph )$weight <- 1
   men_graph <- simplify(men_graph,edge.attr.comb = list(weight = "sum", function(x)length(x)))
-  E(men_graph)$weight
+ 
   }
   
    
