@@ -112,15 +112,16 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
                                     function(x) paste(x, collapse = " "))))
      channel_obj$links[which(channel_obj$links=="na")]=""                                 
      channel_obj$hashtagsOnTwitter = tolower(unlist(lapply(extract_hashtag(channel_obj$text), 
-                                                function(x) paste(x, collapse = " "))))hannel_obj$locationUser=NA
-    channel_obj$place=NA
-    channel_obj$time_zone=NA
-    channel_obj$class_users=NA
-    channel_obj$class_hashtag=NA
-    channel_obj$class_message=NA
-    channel_obj$class_custom=NA
-    channel_obj$geo_lat=as.numeric(channel_obj$latitude)
-    channel_obj$geo_long=as.numeric(channel_obj$longitude)
+                                                function(x) paste(x, collapse = " "))))
+     channel_obj$locationUser=NA
+     channel_obj$place=NA
+     channel_obj$time_zone=NA
+     channel_obj$class_users=NA
+     channel_obj$class_hashtag=NA
+     channel_obj$class_message=NA
+     channel_obj$class_custom=NA
+     channel_obj$geo_lat=as.numeric(channel_obj$latitude)
+     channel_obj$geo_long=as.numeric(channel_obj$longitude)
     
   }
   
