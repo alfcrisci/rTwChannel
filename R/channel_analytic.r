@@ -105,10 +105,14 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
     channel_obj=channel_obj[rev(1:nrow(channel_obj)),]
     channel_obj$hour=hour(ymd_hms(channel_obj$publicationTime))
     channel_obj$month=month(ymd_hms(channel_obj$publicationTime))
-    channel_obj$mentions=tolower(unlist(lapply(extract_mentions(x$text),function(x) paste(x,collapse = " "))))
-    channel_obj$links=unlist(lapply(extract_links(x$text),function(x) paste(x,collapse = " ")))
-    channel_obj$hashtagsOnTwitter=tolower(unlist(lapply(extract_hashtag(x$text),function(x) paste(x,collapse = " "))))
-    channel_obj$locationUser=NA
+     channel_obj$mentions = tolower(unlist(lapply(extract_mentions(channel_obj$text), 
+                                       function(x) paste(x, collapse = " "))))
+     channel_obj$mentions[which( channel_obj$mentions=="na")]=""                                  
+     channel_obj$links = tolower(unlist(lapply(extract_links(channel_obj$text), 
+                                    function(x) paste(x, collapse = " "))))
+     channel_obj$links[which(channel_obj$links=="na")]=""                                 
+     channel_obj$hashtagsOnTwitter = tolower(unlist(lapply(extract_hashtag(channel_obj$text), 
+                                                function(x) paste(x, collapse = " "))))hannel_obj$locationUser=NA
     channel_obj$place=NA
     channel_obj$time_zone=NA
     channel_obj$class_users=NA
@@ -157,8 +161,10 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
      channel_obj$favoriteCount=channel_obj$favorite_count
      channel_obj$mentions = tolower(unlist(lapply(extract_mentions(channel_obj$text), 
                                        function(x) paste(x, collapse = " "))))
-     channel_obj$links = unlist(lapply(extract_links(channel_obj$text), 
-                                    function(x) paste(x, collapse = " ")))
+     channel_obj$mentions[which( channel_obj$mentions=="na")]=""                                  
+     channel_obj$links = tolower(unlist(lapply(extract_links(channel_obj$text), 
+                                    function(x) paste(x, collapse = " "))))
+     channel_obj$links[which(channel_obj$links=="na")]=""                                 
      channel_obj$hashtagsOnTwitter = tolower(unlist(lapply(extract_hashtag(channel_obj$text), 
                                                 function(x) paste(x, collapse = " "))))
      channel_obj$locationUser = NA
