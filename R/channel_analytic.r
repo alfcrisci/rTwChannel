@@ -48,7 +48,7 @@
 #'
 #'
 #' @importFrom igraph graph.edgelist simplify
-#' @importFrom lubridate dmy_hms month hour
+#' @importFrom lubridate dmy_hms month hour ymd_hms
 #' @export
 #'
 #'
@@ -87,7 +87,7 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
     channel_obj$created <- dmy_hms(channel_obj$time)
     channel_obj=channel_obj[which(!is.na(channel_obj$created)),]
     channel_obj$date <- as.Date(dmy_hms(channel_obj$created))
-    channel_obj$screenName=channel_obj$from_user
+    channel_obj$screenName=tolower(channel_obj$from_user)
     channel_obj$id=as.numeric(channel_obj$id_str)
     channel_obj$twitterId=as.numeric(channel_obj$id_str)
     channel_obj$lang=channel_obj$user_lang
@@ -103,11 +103,11 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
     channel_obj$publicationTime <- channel_obj$time
     channel_obj$time<-NULL
     channel_obj=channel_obj[rev(1:nrow(channel_obj)),]
-    channel_obj$hour=hour(lubridate::ymd_hms(channel_obj$publicationTime))
-    channel_obj$month=month(lubridate::ymd_hms(channel_obj$publicationTime))
-    channel_obj$mentions=unlist(lapply(extract_mentions(x$text),function(x) paste(x,collapse = " ")))
+    channel_obj$hour=hour(ymd_hms(channel_obj$publicationTime))
+    channel_obj$month=month(ymd_hms(channel_obj$publicationTime))
+    channel_obj$mentions=tolower(unlist(lapply(extract_mentions(x$text),function(x) paste(x,collapse = " "))))
     channel_obj$links=unlist(lapply(extract_links(x$text),function(x) paste(x,collapse = " ")))
-    channel_obj$hashtagsOnTwitter=unlist(lapply(extract_hashtag(x$text),function(x) paste(x,collapse = " ")))
+    channel_obj$hashtagsOnTwitter=tolower(unlist(lapply(extract_hashtag(x$text),function(x) paste(x,collapse = " "))))
     channel_obj$locationUser=NA
     channel_obj$place=NA
     channel_obj$time_zone=NA
@@ -125,12 +125,12 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
     
     channel_obj$text=gsub("[\x80-\xFF]","",channel_obj$message) # remove multibyte
     channel_obj$date=as.character(as.Date(lubridate::ymd_hms(channel_obj$publicationTime)))
-    channel_obj$screenName=channel_obj$twitterUser
+    channel_obj$screenName=tolower(channel_obj$twitterUser)
     channel_obj$created=channel_obj$publicationTime
     channel_obj$id=channel_obj$twitterId
     channel_obj$message<-NULL
-    channel_obj$hour=hour(lubridate::ymd_hms(channel_obj$publicationTime))
-    channel_obj$month=month(lubridate::ymd_hms(channel_obj$publicationTime))
+    channel_obj$hour=hour(ymd_hms(channel_obj$publicationTime))
+    channel_obj$month=month(ymd_hms(channel_obj$publicationTime))
     channel_obj$isRetweet=channel_obj$retweet
     channel_obj$retweet<-NULL
     channel_obj$class_users=NA
@@ -143,7 +143,7 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
 
     
   if ( naming == "rtweet") {
-     channel_obj$screenName=channel_obj$screen_name;
+     channel_obj$screenName=tolower(channel_obj$screen_name);
      channel_obj$screen_name=NULL
      channel_obj$twitterId = as.numeric(channel_obj$status_id)
      channel_obj$status_id=NULL
@@ -155,12 +155,12 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
      channel_obj$publicationTime = channel_obj$created_at
      channel_obj$retweetCount=channel_obj$retweet_count
      channel_obj$favoriteCount=channel_obj$favorite_count
-     channel_obj$mentions = unlist(lapply(extract_mentions(channel_obj$text), 
-                                       function(x) paste(x, collapse = " ")))
+     channel_obj$mentions = tolower(unlist(lapply(extract_mentions(channel_obj$text), 
+                                       function(x) paste(x, collapse = " "))))
      channel_obj$links = unlist(lapply(extract_links(channel_obj$text), 
                                     function(x) paste(x, collapse = " ")))
-     channel_obj$hashtagsOnTwitter = unlist(lapply(extract_hashtag(channel_obj$text), 
-                                                function(x) paste(x, collapse = " ")))
+     channel_obj$hashtagsOnTwitter = tolower(unlist(lapply(extract_hashtag(channel_obj$text), 
+                                                function(x) paste(x, collapse = " "))))
      channel_obj$locationUser = NA
      channel_obj$place = channel_obj$place_name
      channel_obj$time_zone = NA
@@ -187,9 +187,9 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
     channel_obj$month=month(channel_obj$dateTime)
     channel_obj$screenName=account_tw
     channel_obj$text=gsub("[\x80-\xFF]","",x$text)
-    channel_obj$mentions=unlist(lapply(extract_mentions(x$text),function(x) paste(x,collapse = " ")))
+    channel_obj$mentions=tolower(unlist(lapply(extract_mentions(x$text),function(x) paste(x,collapse = " ")))
     channel_obj$links=unlist(lapply(extract_links(x$text),function(x) paste(x,collapse = " ")))
-    channel_obj$hashtagsOnTwitter=unlist(lapply(extract_hashtag(x$text),function(x) paste(x,collapse = " ")))
+    channel_obj$hashtagsOnTwitter=tolower(unlist(lapply(extract_hashtag(x$text),function(x) paste(x,collapse = " "))))
     
     
   }
@@ -242,8 +242,8 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   if ( (length(channel_obj$isRetweet[which(channel_obj$isRetweet==1)]) > 0) && (only_original_tweet==FALSE))  { 
     
     id_retweet=which(channel_obj$isRetweet==1)
-    retweeter_authors=gsub("^@","",channel_obj$screenName[id_retweet])
-    retweeted_users=gsub("^@","",unlist(lapply(channel_obj$mentions[id_retweet],function(x) unlist(strsplit(x," "))[1])))
+    retweeter_authors=tolower(gsub("^@","",channel_obj$screenName[id_retweet]))
+    retweeted_users=tolower(gsub("^@","",unlist(lapply(channel_obj$mentions[id_retweet],function(x) unlist(strsplit(x," "))[1]))))
     mat_retweet_df=na.omit(data.frame(date=channel_obj$date[id_retweet],message=channel_obj$text[id_retweet],authors=retweeter_authors,retweeted_users=retweeted_users))
     
     }
@@ -349,7 +349,8 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   # Frequency analisys
   
   if ( (length(channel_obj$isRetweet[which(channel_obj$isRetweet==1)]) > 0) && (only_original_tweet==FALSE)) {
-    
+    ls_message_df$message=tolower(ls_message_df$message);
+    ls_message_df$authors=tolower(ls_message_df$authors);
     rank_message_retweeted=aggregate(as.numeric(ls_message_df$retweetCount),list(ls_message_df$message),sum)
     rank_message_retweeted=rank_message_retweeted[order(-rank_message_retweeted[,2]),]
     names(rank_message_retweeted)<-c("message","SumretweetCount")
@@ -412,13 +413,13 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   ##########################################################################
   if (length(mat_hashtag_df$whomentioned) >1) {
   
-  table_mentions=as.data.frame.array(sort(table(mat_mentions_df$whomentioned),decreasing=T))
+  table_mentions=as.data.frame.array(sort(table(tolower(mat_mentions_df$whomentioned)),decreasing=T))
   table_mentions=data.frame(users=rownames(table_mentions),
                             Freq=as.vector(table_mentions))
   names(table_mentions)<-c("mention","freq")
   rownames(table_mentions)<-NULL
     } else { 
-  table_mentions=data.frame(users=mat_mentions_df$whomentioned,
+  table_mentions=data.frame(users=tolower(mat_mentions_df$whomentioned),
                             Freq=1)
   names(table_mentions)<-c("mention","freq")
   rownames(table_mentions)<-NULL
