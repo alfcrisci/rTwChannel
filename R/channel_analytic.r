@@ -187,7 +187,7 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
     channel_obj$month=month(channel_obj$dateTime)
     channel_obj$screenName=account_tw
     channel_obj$text=gsub("[\x80-\xFF]","",x$text)
-    channel_obj$mentions=tolower(unlist(lapply(extract_mentions(x$text),function(x) paste(x,collapse = " ")))
+    channel_obj$mentions=tolower(unlist(lapply(extract_mentions(x$text),function(x) paste(x,collapse = " "))))
     channel_obj$links=unlist(lapply(extract_links(x$text),function(x) paste(x,collapse = " ")))
     channel_obj$hashtagsOnTwitter=tolower(unlist(lapply(extract_hashtag(x$text),function(x) paste(x,collapse = " "))))
     
