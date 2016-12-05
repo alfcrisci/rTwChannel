@@ -327,20 +327,14 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   rank_message_retweeted=data.frame(message=NA,SumretweetCount=NA)
   rank_authors_retweeted=data.frame(message=NA,SumretweetCount=NA)
   table_retweeter=data.frame(author_retweeter=NA,freq=NA)
-   if (  N_favorited > 0) {
+  rank_authors_favorited=data.frame(authors=NA,SumfavoriteCount=0)
+  if (  N_favorited > 0) {
  
   rank_authors_favorited=aggregate(as.numeric(ls_favorite_df$favoriteCount),list(ls_favorite_df$authors),sum)
   rank_authors_favorited=rank_authors_favorited[order(-rank_authors_favorited[,2]),]
    names(rank_authors_favorited)<-c("authors","SumfavoriteCount")
      
-  } else {
-   
-   
-      rank_authors_favorited=data.frame(authors=NA,SumfavoriteCount=0)
-   
-   
-   }
-                                                      
+  }                                             
                                                       
  
   
@@ -364,7 +358,7 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
                              Freq=as.vector(table_retweeter))
     names(table_retweeter)<-c("author_retweeter","freq")
     rownames(table_retweeter)<-NULL
-    
+    table_retweeter=na.omit(table_retweeter);
       
   }
   
@@ -383,63 +377,54 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   
   
   ##########################################################################
+ table_authors=NULL
   if (length(channel_obj$screenName) >1) {
       table_authors=as.data.frame.array(sort(table(tolower(channel_obj$screenName)),decreasing=T))
       table_authors=data.frame(authors=rownames(table_authors),
                            Freq=as.vector(table_authors))
       names(table_authors)<-c("author","freq")
       rownames(table_authors)<-NULL
-  }  else { 
-      table_authors=data.frame(authors=channel_obj$screenName,
-                               Freq=1)
-      names(table_authors)<-c("author","freq")
-      rownames(table_authors)<-NULL
-  }
+    table_authors=na.omit(table_authors);
+  } 
     
   ##########################################################################
-  if (length(mat_hashtag_df$hashtag) >1) {
+  table_hash=NULL
+   if (length(mat_hashtag_df$hashtag) >1) {
   
   table_hash=as.data.frame.array(sort(table(tolower(mat_hashtag_df$hashtag)),decreasing=T))
   table_hash=data.frame(hashtag=rownames(table_hash),
                         Freq=as.vector(table_hash))
   names(table_hash)<-c("hashtag","freq")
   rownames(table_hash)<-NULL
-  } else { 
-  table_hash=data.frame(hashtag=mat_hashtag_df$hashtag,
-                        Freq=1)
-  names(table_hash)<-c("hashtag","freq")
-  rownames(table_hash)<-NULL
+  table_hash=na.omit(table_hash)   
   }
   ##########################################################################
-  if (length(mat_hashtag_df$whomentioned) >1) {
+ table_mentions=NULL 
+ if (length(mat_mentions_df$whomentioned) >1) {
   
   table_mentions=as.data.frame.array(sort(table(tolower(mat_mentions_df$whomentioned)),decreasing=T))
   table_mentions=data.frame(users=rownames(table_mentions),
                             Freq=as.vector(table_mentions))
   names(table_mentions)<-c("mention","freq")
   rownames(table_mentions)<-NULL
-    } else { 
-  table_mentions=data.frame(users=tolower(mat_mentions_df$whomentioned),
-                            Freq=1)
-  names(table_mentions)<-c("mention","freq")
-  rownames(table_mentions)<-NULL
-    }
+  table_mentions=na.omit(table_mentions)   
+   
+    } 
   
   ##########################################################################
-  if (length(mat_links_df$links) >1) {
+  
+  table_links=NULL                                    
+   if (length(mat_links_df$links) >1) {
    
     
   table_links=as.data.frame.array(sort(table(mat_links_df$links),decreasing=T))
   table_links=data.frame(users=rownames(table_links),
                             Freq=as.vector(table_links))
   names(table_links)<-c("links","freq")
-  rownames(table_links)<-NULL
-    } else { 
-  table_links=data.frame(users=rownames(table_links),
-                            Freq=as.vector(table_links))
-  names(table_links)<-c("links","freq")
-  rownames(table_links)<-NULL
-    }    
+  rowable_links=na.omit(table_links)   
+   names(table_links)<-NULL
+  table_links=na.omit(table_links)   
+   }
       
  
   ##########################################################################
