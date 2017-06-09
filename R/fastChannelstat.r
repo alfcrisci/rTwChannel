@@ -178,7 +178,7 @@ if (nrow(x)==1) {   res_df$RTW_TW=1;
 
   full_mentions=strsplit(gsub(" NA"," ",do.call(paste, c(as.list(x$mentions), sep=" "))), "\\s+")
   full_links=strsplit(gsub(" NA"," ",do.call(paste, c(as.list(x$links), sep=" "))), "\\s+")
-  full_users=strsplit(gsub(" NA"," ",do.call(paste, c(as.list(x$screenName), sep=" "))), "\\s+")
+  full_users=strsplit(gsub(" NA"," ",do.call(paste, c(as.list(tolower(x$screenName)), sep=" "))), "\\s+")
   full_hashtag=strsplit(gsub(" NA"," ",do.call(paste, c(as.list(x$hashtagsOnTwitter), sep=" "))), "\\s+")
   
  
