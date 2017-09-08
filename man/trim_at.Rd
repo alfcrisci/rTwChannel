@@ -19,4 +19,3 @@ Remove at caracter from users mentioned in  tweet message
 Istituto di Biometeorologia Firenze Italy  Alfonso crisci \email{a.crisci@ibimet.cnr.it}
 }
 \keyword{retweet}
-

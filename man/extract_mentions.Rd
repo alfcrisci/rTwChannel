@@ -15,11 +15,10 @@ Return the list of mentioned users
 \description{
 Extract any mentions, a twitter account mentioned in message, from a tweet.
 }
-\author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
-}
 \references{
 qdap R packages
 }
+\author{
+Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+}
 \keyword{mentions}
-

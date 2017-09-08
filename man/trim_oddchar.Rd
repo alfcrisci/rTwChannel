@@ -19,4 +19,3 @@ Remove unicode characters troughout UTF-8 conversion
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
 \keyword{retweet}
-

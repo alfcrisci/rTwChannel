@@ -27,4 +27,3 @@ Retrieve a keylist qdap object with  annotations from a github public repository
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
 \keyword{match}
-

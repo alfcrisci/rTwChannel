@@ -34,4 +34,3 @@ Export result from  \code{channel_analytic} objects.
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
 \keyword{annotation}
-

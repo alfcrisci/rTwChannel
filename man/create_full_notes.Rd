@@ -21,4 +21,3 @@ Merge keylist  objects with  annotations into a comprehensive one. Need a vector
 Istituto di Biometeorologia Firenze Italy  Alfonso crisci \email{a.crisci@ibimet.cnr.it}
 }
 \keyword{match}
-

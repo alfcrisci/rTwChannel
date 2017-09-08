@@ -15,12 +15,11 @@ A vector of retweted users
 \description{
 Extract any user from native retweets from a tweet message
 }
-\author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
-}
 \references{
 qdapRegex R packages
 }
+\author{
+Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+}
 \keyword{retweet}
 \keyword{user,}
-

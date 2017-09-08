@@ -21,4 +21,3 @@ Extract on a character vector the occurence of textual pattern
 Istituto di Biometeorologia Firenze Italy  Alfonso crisci \email{a.crisci@ibimet.cnr.it}
 }
 \keyword{match}
-

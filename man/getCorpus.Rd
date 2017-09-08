@@ -4,7 +4,7 @@
 \alias{getCorpus}
 \title{getCorpus}
 \usage{
-getCorpus(textVector, hashtag = FALSE)
+getCorpus(textVector, hashtag = FALSE, elim_words)
 }
 \arguments{
 \item{textVector}{Character  Message of tweet}
@@ -22,4 +22,3 @@ Istituto di Biometeorologia Firenze Italy  Alfonso crisci \email{a.crisci@ibimet
 }
 \keyword{Tm,}
 \keyword{corpus}
-

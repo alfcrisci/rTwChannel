@@ -19,4 +19,3 @@ Remove head  caracters  before user in  retweeted messages
 Istituto di Biometeorologia Firenze Italy  Alfonso crisci \email{a.crisci@ibimet.cnr.it}
 }
 \keyword{retweet}
-

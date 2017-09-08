@@ -6,45 +6,47 @@
 \usage{
 channel_analytic(channel_obj, use_channel_dates = TRUE, start_date = NULL,
   end_date = NULL, Ntop = 11, Nmin = 25, naming = "",
-  only_original_tweet = FALSE, lowercase = TRUE, stopword = "ITA",
-  account_tw = "", corpus_hashtag = TRUE, graph_analisys = FALSE,
-  corpus_analisys = FALSE)
+  only_original_tweet = FALSE, lowercase = TRUE, corpus_lang = "it",
+  stopword = TRUE, account_tw = "", corpus_hashtag = TRUE,
+  graph_analisys = FALSE, corpus_analisys = FALSE)
 }
 \arguments{
-\item{channel_obj}{data.frame Dataset of tweets}
+\item{channel_obj}{data.frame Dataset of tweets.}
 
-\item{use_channel_dates}{Logical Use temporal indication of channel}
+\item{use_channel_dates}{logical Use temporal indication of channel.}
 
-\item{start_date}{Character Date of analisys starting.}
+\item{start_date}{character Date of analisys starting.}
 
-\item{end_date}{Character Date of  analisys ending.}
+\item{end_date}{character Date of  analisys ending.}
 
-\item{Ntop}{Integer indicate the maximum number for top statistics}
+\item{Ntop}{integer indicate the maximum number for top statistics.}
 
-\item{Nmin}{Integer indicate the minimal data numerosity}
+\item{Nmin}{integer indicate the minimal data numerosity.}
 
-\item{naming}{Character Indicate which naming framework is adopted.}
+\item{naming}{character Indicate which naming framework is adopted.}
 
-\item{only_original_tweet}{Logical Taking into account only original. Default all tweets are considered.}
+\item{only_original_tweet}{logical Taking into account only original. Default all tweets are considered.}
 
 \item{lowercase}{logical Consider  all text as lower case. Default is TRUE.}
 
-\item{stopword}{Character stopword set to be use to calculate word frequency matrix. Default italian stopwords of R tm package.}
+\item{corpus_lang}{character language used in Corpora analisys done. Default is "it".}
 
-\item{account_tw}{CharacterUser account if naming parameter is an "account_statistics".}
+\item{stopword}{logical if stopword set to is  removed from word frequency matrix. Default italian stopwords of R tm package.}
+
+\item{account_tw}{character User account if naming parameter is an "account_statistics".}
 
 \item{corpus_hashtag}{logical Corpus analisys not considering the hashtag.}
 
 \item{graph_analisys}{Igraph object Graph analisys done. default is FALSE.}
 
-\item{corpus_analisys}{qDap object Corpora analisys done. Default is FALSE.}
+\item{corpus_analisys}{qDap object wfm for Corpora analisys done. Default is FALSE.}
 }
 \value{
-Return a R list object  for channel analisys:
+Return a R list object  for channel analisys.
 
 channel_stat list: Channel summaries of following parameters.
 
-daily_stat data.frame : Daily channel statistics featured by
+daily_stat data.frame : Daily channel statistics.
 
 table_message data.frame :Frequency data  of messages.
 
@@ -78,11 +80,11 @@ top_links data.frame : TopN links.
 
 topfull_authors_retweeter data.frame : TopN author that have retweeted.
 
-topfull_message_retweeted data.frame : TopN message that have retweeted-
+topfull_message_retweeted data.frame : TopN message that have retweeted.
 
-graph_retweet igraph object: Simplified Retweet graph
+graph_retweet igraph object: Simplified Retweet graph.
 
-graph_mentions igraph object: Simplified Mention graph object as igraph R object
+graph_mentions igraph object: Simplified Mention graph object as igraph R object.
 
 channel_data data.frame: Channel_data used for analisys with other ancillary variables.
 
@@ -99,4 +101,3 @@ Extract many informative stats and object  from a set of tweet messages parsed a
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
 \keyword{channel,stats}
-

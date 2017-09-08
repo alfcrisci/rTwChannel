@@ -19,4 +19,3 @@ Check if a tweet message have retweet characters
 Istituto di Biometeorologia Firenze Italy  Alfonso crisci \email{a.crisci@ibimet.cnr.it}
 }
 \keyword{retweet}
-

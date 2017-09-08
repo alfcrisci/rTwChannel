@@ -15,11 +15,10 @@ Return the list of mentioned users
 \description{
 Extract url mentioned in a message of tweet.
 }
-\author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
-}
 \references{
 qdap R packages
 }
+\author{
+Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+}
 \keyword{links}
-

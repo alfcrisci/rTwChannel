@@ -28,4 +28,3 @@ retrieve keylist to perform a build of qdap object from repository.
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
 \keyword{annotation}
-

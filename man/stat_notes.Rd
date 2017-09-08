@@ -21,4 +21,3 @@ Create a list statistical object by using qdap keylist
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
 \keyword{annotation}
-

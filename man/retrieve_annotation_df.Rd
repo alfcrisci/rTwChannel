@@ -27,4 +27,3 @@ Retrieve the dataframe of annotations from a github public repository related to
 Istituto di Biometeorologia Firenze Italy  Alfonso crisci \email{a.crisci@ibimet.cnr.it}
 }
 \keyword{match}
-

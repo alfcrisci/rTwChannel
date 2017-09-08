@@ -25,4 +25,3 @@ Create a stat note object from time list of hashtag
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
 \keyword{match}
-

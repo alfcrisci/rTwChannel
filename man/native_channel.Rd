@@ -21,4 +21,3 @@ extract a channel object only with original tweet
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
 \keyword{channel}
-

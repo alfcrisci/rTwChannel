@@ -21,4 +21,3 @@ Extract on a character vector the  frequency of matches relative to textual patt
 Istituto di Biometeorologia Firenze Italy  Alfonso crisci \email{a.crisci@ibimet.cnr.it}
 }
 \keyword{match}
-

@@ -2,23 +2,24 @@
 #'
 #' @description Extract many informative stats and object  from a set of tweet messages parsed as channel
 #'
-#' @param  channel_obj  data.frame Dataset of tweets
-#' @param  use_channel_dates Logical Use temporal indication of channel
-#' @param  start_date   Character Date of analisys starting.
-#' @param  end_date   Character Date of  analisys ending.
-#' @param  Ntop Integer indicate the maximum number for top statistics
-#' @param  Nmin Integer indicate the minimal data numerosity
-#' @param  naming Character Indicate which naming framework is adopted.
-#' @param  only_original_tweet Logical Taking into account only original. Default all tweets are considered.
+#' @param  channel_obj  data.frame Dataset of tweets.
+#' @param  use_channel_dates logical Use temporal indication of channel.
+#' @param  start_date   character Date of analisys starting.
+#' @param  end_date   character Date of  analisys ending.
+#' @param  Ntop integer indicate the maximum number for top statistics.
+#' @param  Nmin integer indicate the minimal data numerosity.
+#' @param  naming character Indicate which naming framework is adopted.
+#' @param  only_original_tweet logical Taking into account only original. Default all tweets are considered.
 #' @param  lowercase logical Consider  all text as lower case. Default is TRUE.
-#' @param  stopword Character stopword set to be use to calculate word frequency matrix. Default italian stopwords of R tm package.
+#' @param  corpus_lang character language used in Corpora analisys done. Default is "it".
+#' @param  stopword logical if stopword set to is  removed from word frequency matrix. Default italian stopwords of R tm package.
 #' @param  corpus_hashtag logical Corpus analisys not considering the hashtag.
-#' @param  account_tw CharacterUser account if naming parameter is an "account_statistics".
+#' @param  account_tw character User account if naming parameter is an "account_statistics".
 #' @param  graph_analisys Igraph object Graph analisys done. default is FALSE.
-#' @param  corpus_analisys qDap object Corpora analisys done. Default is FALSE.
-#' @return Return a R list object  for channel analisys:
+#' @param  corpus_analisys qDap object wfm for Corpora analisys done. Default is FALSE.
+#' @return Return a R list object  for channel analisys.
 #' @return channel_stat list: Channel summaries of following parameters.
-#' @return daily_stat data.frame : Daily channel statistics featured by 
+#' @return daily_stat data.frame : Daily channel statistics.
 #' @return table_message data.frame :Frequency data  of messages.
 #' @return table_hash data.frame : Frequency data  hashtags.
 #' @return table_mentions data.frame : Frequency data of mentions.
@@ -35,9 +36,9 @@
 #' @return top_mentions data.frame : TopN user mentioned.
 #' @return top_links data.frame : TopN links.
 #' @return topfull_authors_retweeter data.frame : TopN author that have retweeted.
-#' @return topfull_message_retweeted data.frame : TopN message that have retweeted- 
-#' @return graph_retweet igraph object: Simplified Retweet graph
-#' @return graph_mentions igraph object: Simplified Mention graph object as igraph R object
+#' @return topfull_message_retweeted data.frame : TopN message that have retweeted.
+#' @return graph_retweet igraph object: Simplified Retweet graph.
+#' @return graph_mentions igraph object: Simplified Mention graph object as igraph R object.
 #' @return channel_data data.frame: Channel_data used for analisys with other ancillary variables.
 #' @return channel_corpus wfm object:  Corpus of messages without mentions and links and optionally without hashtag.
 #' @return word_freq_matr qdap wfm object : Word frequency matrix.
@@ -54,7 +55,7 @@
 #'
 
 channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, end_date=NULL,Ntop=11,
-                          Nmin=25,naming="",only_original_tweet=FALSE,lowercase=TRUE,stopword = "ITA", 
+                          Nmin=25,naming="",only_original_tweet=FALSE,lowercase=TRUE,corpus_lang= "it",stopword=TRUE,
                           account_tw="",corpus_hashtag=TRUE,graph_analisys=FALSE,corpus_analisys=FALSE) 
                           
                           {
@@ -482,8 +483,8 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
   
   if ( (corpus_analisys==TRUE)) 
                                {
-                               stopwords=stopword;
-                               if ( stopword=="ITA") {stopwords=tm::stopwords(kind = "it")}
+                               stopwords="";
+                               if ( stopword ==T) {stopwords=tm::stopwords(kind = corpus_lang)}
                                corpus=getCorpus(channel_obj$text,hashtag=corpus_hashtag,stopwords)
                                word_freq_matr<- as.wfm(TermDocumentMatrix(corp, control = list(wordLengths = c(2, Inf),stopword=T)))
                                word_freq_matr=as.data.frame(word_freq_matr)

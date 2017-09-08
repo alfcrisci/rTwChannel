@@ -19,4 +19,3 @@ Merge character vec in one string.
 Istituto di Biometeorologia Firenze Italy  Alfonso crisci \email{a.crisci@ibimet.cnr.it}
 }
 \keyword{string}
-

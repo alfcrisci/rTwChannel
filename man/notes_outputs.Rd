@@ -34,4 +34,3 @@ Export result from statistical notes object. Require daily stat object from chan
 Istituto di Biometeorologia Firenze Italy  Alfonso crisci \email{a.crisci@ibimet.cnr.it}
 }
 \keyword{annotation}
-
