@@ -9,10 +9,12 @@ getCorpus(textVector, hashtag = FALSE, elim_words)
 \arguments{
 \item{textVector}{Character  Message of tweet}
 
-\item{hashtag}{remove hashtag from corpus}
+\item{hashtag}{logical remove hashtag from corpus}
+
+\item{elim_words}{character the words to be removed from corpus}
 }
 \value{
-Return   the tm corpus of message purged by mentions and links.
+Return   a tm corpus of message purged by mentions and links.
 }
 \description{
 Creating corpus object by using tm R package a from messages.
