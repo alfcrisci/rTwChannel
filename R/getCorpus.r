@@ -12,7 +12,7 @@
 #'
 #' @export
 
-getCorpus <-function(textVector, hashtag=FALSE)
+getCorpus <-function(textVector, hashtag=FALSE,elim_words)
 { if ( hashtag==TRUE)
   {textVector=qdapRegex::rm_hash(textVector)}
   textVector=qdapRegex::rm_url(textVector)
@@ -24,5 +24,6 @@ getCorpus <-function(textVector, hashtag=FALSE)
   doc.corpus <- tm::tm_map(doc.corpus, removeNumbers)
   doc.corpus <- tm::tm_map(doc.corpus, removePunctuation)
   doc.corpus <- tm::tm_map(doc.corpus, PlainTextDocument)
+   doc.corpus <- tm_map(text_corpus, removeWords, elim_words)
   return(doc.corpus)
 }
