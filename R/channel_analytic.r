@@ -8,7 +8,7 @@
 #' @param  end_date   character Date of  analisys ending.
 #' @param  Ntop integer indicate the maximum number for top statistics.
 #' @param  Nmin integer indicate the minimal data numerosity.
-#' @param  naming character Indicate which naming framework is adopted.
+#' @param  naming character Indicate which naming framework is adopted. "TAGS","DISIT","rtweet","account_analitics" are names allowed.
 #' @param  only_original_tweet logical Taking into account only original. Default all tweets are considered.
 #' @param  lowercase logical Consider  all text as lower case. Default is TRUE.
 #' @param  corpus_lang character language used in Corpora analisys done. Default is "it".
