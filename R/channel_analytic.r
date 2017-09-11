@@ -486,13 +486,9 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
                                stopwords="";
                                if ( stopword ==T) {stopwords=tm::stopwords(kind = corpus_lang)}
                                corpus=getCorpus(channel_obj$text,hashtag=corpus_hashtag,stopwords)
-                               word_freq_matr<- as.wfm(TermDocumentMatrix(corpus, control = list(wordLengths = c(2, Inf),stopword=T)))
-                               word_freq_matr=as.data.frame(word_freq_matr)
-                               word_freq_matr$word=row.names(word_freq_matr)
-                               word_freq_matr=word_freq_matr[c("word","grouping.var")]
-                               names(word_freq_matr)=c("Words","Freq")
+                               word_freq_matr<- as.data.frame(as.wfm(TermDocumentMatrix(corpus, control = list(wordLengths = c(2, Inf),stopword=T))))
+                               word_freq_matr=data.frame(Words=row.names(word_freq_matr),Freq=word_freq_matr$content)
                                word_freq_matr=word_freq_matr[rev(order(word_freq_matr$Freq)),]
-                               row.names(word_freq_matr)=NULL
                                message("Corpus analisys of channel are done!\n")
                                }
   
