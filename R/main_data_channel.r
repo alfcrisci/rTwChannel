@@ -23,10 +23,11 @@
 #'
 #'
 
-main_data_channel=function(x,name,native=F,graph=T,corpus=F,users=T,data=T,csv=FALSE,filterdegree=0,graph_files=FALSE) {
-   name=ifelse( nchar(name)>10,substr(name, 1, 10),name)
-  if ( native==F) {name=paste0(name,"_F")}
-  if ( native==T) {name=paste0(name,"_N")}
+main_data_channel=function(x,name,native=F,graph=T,corpus=F,users=T,data=T,csv=FALSE,filterdegree=0,graph_files=FALSE) 
+   {
+   name=ifelse( nchar(name)>8,substr(name, 1, 8),name)
+   if ( native==F) {name=paste0(name,"_F")}
+   if ( native==T) {name=paste0(name,"_N")}
 
   
 
