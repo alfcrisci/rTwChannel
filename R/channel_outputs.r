@@ -54,7 +54,7 @@ channel_outputs=function(stat_obj, param="channel_stat", suffix_file="LIG", na_s
   
   
   res=stat_obj[[as.numeric(param_list[param])]]
-  
+  suffix_file=ifelse( nchar(suffix_file)>10,substr(suffix_file, 1, 10),suffix_file)
   if ( filecsv == TRUE) {
     write.csv(res,paste0(suffix_file,"_",param,".csv"),na=na_string,row.names = F)
     
