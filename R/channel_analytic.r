@@ -176,8 +176,8 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
      channel_obj$class_hashtag = NA
      channel_obj$class_message = NA
      channel_obj$class_custom = NA
-     channel_obj$geo_long = as.numeric(channel_obj$coordinates[,1])
-     channel_obj$geo_lat = as.numeric(channel_obj$coordinates[,5])
+     channel_obj$geo_long = ifelse(is.na(channel_obj$coordinates),NA,as.numeric(channel_obj$coordinates[,1])
+     channel_obj$geo_lat =  ifelse(is.na(channel_obj$coordinates),NA,as.numeric(channel_obj$coordinates[,5])
      channel_obj$coordinates =NULL
    
   }
