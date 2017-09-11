@@ -54,12 +54,12 @@ main_data_channel=function(x,name,native=F,graph=T,corpus=F,users=T,data=T,csv=F
   }
   res[[12]]=NULL
   if ( data==T) {                   
-                writeWorksheetToFile(file=paste0("data_channel_",name,".xls"), x$channel_data, sheet=paste("data_channel",name))
+                writeWorksheetToFile(file=paste0("data_channel_",name,".xls"), x$channel_data, sheet=paste("data",name))
                 
                 }
  
    if ( users==T) {
-                  writeWorksheetToFile(file=paste0("users_channel_",name,".xls"), x$users_data, sheet=paste("users_channel",name))
+                  writeWorksheetToFile(file=paste0("users_channel_",name,".xls"), x$users_data, sheet=paste("users",name))
                   res[[12]]=x$users_data
                   }
    res[[13]]=NULL
