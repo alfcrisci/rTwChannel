@@ -149,6 +149,7 @@ channel_analytic=function(channel_obj,use_channel_dates=TRUE, start_date=NULL, e
 
     
   if ( naming == "rtweet") {
+     channel_obj$created_at=as.character(channel_obj$created_at)
      channel_obj$screenName=tolower(channel_obj$screen_name);
      channel_obj$screen_name=NULL
      channel_obj$twitterId = as.numeric(channel_obj$status_id)
