@@ -4,11 +4,23 @@
 \alias{channel_analytic}
 \title{channel_analytic}
 \usage{
-channel_analytic(channel_obj, use_channel_dates = TRUE, start_date = NULL,
-  end_date = NULL, Ntop = 11, Nmin = 25, naming = "",
-  only_original_tweet = FALSE, lowercase = TRUE, corpus_lang = "it",
-  stopword = TRUE, account_tw = "", corpus_hashtag = TRUE,
-  graph_analisys = FALSE, corpus_analisys = FALSE)
+channel_analytic(
+  channel_obj,
+  use_channel_dates = TRUE,
+  start_date = NULL,
+  end_date = NULL,
+  Ntop = 11,
+  Nmin = 25,
+  naming = "",
+  only_original_tweet = FALSE,
+  lowercase = TRUE,
+  corpus_lang = "it",
+  stopword = TRUE,
+  account_tw = "",
+  corpus_hashtag = TRUE,
+  graph_analisys = FALSE,
+  corpus_analisys = FALSE
+)
 }
 \arguments{
 \item{channel_obj}{data.frame Dataset of tweets.}
@@ -23,7 +35,7 @@ channel_analytic(channel_obj, use_channel_dates = TRUE, start_date = NULL,
 
 \item{Nmin}{integer indicate the minimal data numerosity.}
 
-\item{naming}{character Indicate which naming framework is adopted.}
+\item{naming}{character Indicate which naming framework is adopted. "TAGS","DISIT","rtweet","account_analitics" are names allowed.}
 
 \item{only_original_tweet}{logical Taking into account only original. Default all tweets are considered.}
 
@@ -98,6 +110,7 @@ account_stats data.frame : Statistic account's activity by date.
 Extract many informative stats and object  from a set of tweet messages parsed as channel
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
-\keyword{channel,stats}
+\keyword{channel}
+\keyword{stats}

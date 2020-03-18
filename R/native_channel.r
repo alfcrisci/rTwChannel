@@ -5,7 +5,7 @@
 #' @param  channel_obj  data.frame  channel object
 #' @param  naming  character  stream data.frame type
 #' @return channel_obj data.frame Return a data.frame 
-#' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
+#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  channel
 #'
 #'

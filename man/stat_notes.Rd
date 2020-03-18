@@ -18,6 +18,6 @@ A list of statistics for each category of annotation present in notes.
 Create a list statistical object by using qdap keylist
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{annotation}

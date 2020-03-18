@@ -16,6 +16,6 @@ Return message of tweet converted in UTF-8.
 Remove unicode characters troughout UTF-8 conversion
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{retweet}

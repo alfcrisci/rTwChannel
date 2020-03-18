@@ -4,9 +4,12 @@
 \alias{retrieve_annotation_keylist}
 \title{retrieve_annotation_keylist}
 \usage{
-retrieve_annotation_keylist(channel = "allertameteoLIG",
-  category = "emergency", target = "hashtag",
-  repo = "https://raw.github.com/alfcrisci/twchannels_notations/master/")
+retrieve_annotation_keylist(
+  channel = "allertameteoLIG",
+  category = "emergency",
+  target = "hashtag",
+  repo = "https://raw.github.com/alfcrisci/twchannels_notations/master/"
+)
 }
 \arguments{
 \item{channel}{character  Name of channel in repository}
@@ -24,6 +27,6 @@ hash_temp  data.frame   A qdap keylist object with key and category
 Retrieve a keylist qdap object with  annotations from a github public repository related to a channel.
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{match}

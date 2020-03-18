@@ -4,8 +4,11 @@
 \alias{channel_annotation_names}
 \title{channel_annotation_names}
 \usage{
-channel_annotation_names(channel = "allertameteoLIG", target = "hashtag",
-  repo = "https://raw.github.com/alfcrisci/twchannels_notations/master/")
+channel_annotation_names(
+  channel = "allertameteoLIG",
+  target = "hashtag",
+  repo = "https://raw.github.com/alfcrisci/twchannels_notations/master/"
+)
 }
 \arguments{
 \item{channel}{character  Name of channel in repository}
@@ -21,7 +24,7 @@ x    data.frame   A data.frame with key and category
 Retrieve the names of categorical annotations from a github public repository related to annotation regarding the channel.
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{annotations}
 \keyword{names,}

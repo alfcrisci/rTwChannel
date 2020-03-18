@@ -4,8 +4,16 @@
 \alias{notes_outputs}
 \title{notes_outputs}
 \usage{
-notes_outputs(daily_stat, stat_notes, prefix_file = "notes", na_string = "",
-  filecsv = TRUE, html = TRUE, excel = TRUE, daily_unique = FALSE)
+notes_outputs(
+  daily_stat,
+  stat_notes,
+  prefix_file = "notes",
+  na_string = "",
+  filecsv = TRUE,
+  html = TRUE,
+  excel = TRUE,
+  daily_unique = FALSE
+)
 }
 \arguments{
 \item{daily_stat}{data.frame Daily statistics obtained by channel_analytic}
@@ -31,6 +39,6 @@ A list of daily statistics  data, the unique one and full aggregate stats.
 Export result from statistical notes object. Require daily stat object from channel_analytic function.
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{annotation}

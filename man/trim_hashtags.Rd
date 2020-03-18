@@ -16,6 +16,6 @@ Message of tweets without hashtag
 Remove hashtag in a tweet message.
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{retweet}

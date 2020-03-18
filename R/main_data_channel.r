@@ -11,7 +11,7 @@
 #' @param  filterdegree numeric Is the degree of filtering.
 #' @param  graph_files logical  Requesting data of centrality measures.
 #' @return Data from  \code{channel_analytic} object.
-#' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
+#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  annotation
 #'
 #'

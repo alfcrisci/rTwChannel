@@ -5,7 +5,7 @@
 #' @param  obj_notes  character Name of channel in repository
 #' @param  label  logical  Annotation category
 #' @return A qdap keylist object with key and category
-#' @author  Istituto di Biometeorologia Firenze Italy  Alfonso crisci \email{a.crisci@@ibimet.cnr.it}
+#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  match
 #'
 #'

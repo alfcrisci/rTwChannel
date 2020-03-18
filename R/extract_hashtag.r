@@ -4,7 +4,7 @@
 #'
 #' @param  x   Character  Messages of channel's tweets.
 #' @return     Return the list of mentioned users
-#' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
+#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  mentions
 #'
 #' @references  qdap R packages

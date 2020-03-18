@@ -4,8 +4,13 @@
 \alias{retrieve_full_notes}
 \title{retrieve_full_notes}
 \usage{
-retrieve_full_notes(channel, label_notes, category, save = TRUE,
-  filerds = "notes.rds")
+retrieve_full_notes(
+  channel,
+  label_notes,
+  category,
+  save = TRUE,
+  filerds = "notes.rds"
+)
 }
 \arguments{
 \item{channel}{list  Name of channel in repository}
@@ -25,6 +30,6 @@ Return a qdap hash keylist  with key and category
 retrieve keylist to perform a build of qdap object from repository.
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{annotation}

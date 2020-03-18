@@ -20,7 +20,7 @@ Return   a tm corpus of message purged by mentions and links.
 Creating corpus object by using tm R package a from messages.
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{Tm,}
 \keyword{corpus}

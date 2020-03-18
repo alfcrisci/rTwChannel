@@ -5,7 +5,7 @@
 #' @param  x  Data.frame Dataset of tweets
 #' @param  stream Character Type of stream.
 #'
-#' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
+#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  channel, stats, twitter channel.
 #' @return daily_channel_final Data.frame of daily stats performed by \code{fastChannelstat}
 #'

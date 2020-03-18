@@ -11,7 +11,7 @@
 #' @param  excel logical export excel files.
 #' @param  daily_unique logical export daily stats of unique.
 #' @return A list of daily statistics  data, the unique one and full aggregate stats.
-#' @author  Istituto di Biometeorologia Firenze Italy  Alfonso crisci \email{a.crisci@@ibimet.cnr.it}
+#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  annotation
 #'
 #'

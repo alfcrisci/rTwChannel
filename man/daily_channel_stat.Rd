@@ -18,7 +18,7 @@ daily_channel_final Data.frame of daily stats performed by \code{fastChannelstat
 Function to compute daily summary stats of a twitter channel.
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{channel,}
 \keyword{channel.}

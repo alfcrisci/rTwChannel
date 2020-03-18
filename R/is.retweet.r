@@ -4,7 +4,7 @@
 #'
 #' @param  x   Character  Message of tweet
 #' @return     Logical value for each message : TRUE/FALSE.
-#' @author  Istituto di Biometeorologia Firenze Italy  Alfonso crisci \email{a.crisci@@ibimet.cnr.it}
+#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  retweet
 #'
 #'

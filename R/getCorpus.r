@@ -6,7 +6,7 @@
 #' @param  hashtag    logical remove hashtag from corpus
 #' @param  elim_words    character the words to be removed from corpus
 #' @return  Return   a tm corpus of message purged by mentions and links.
-#' @author  Istituto di Biometeorologia Firenze Italy  Alfonso crisci \email{a.crisci@@ibimet.cnr.it}
+#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  Tm, corpus
 #'
 #'

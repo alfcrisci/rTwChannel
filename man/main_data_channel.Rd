@@ -4,8 +4,18 @@
 \alias{main_data_channel}
 \title{main_data_channel}
 \usage{
-main_data_channel(x, name, native = F, graph = T, corpus = F, users = T,
-  data = T, csv = FALSE, filterdegree = 0, graph_files = FALSE)
+main_data_channel(
+  x,
+  name,
+  native = F,
+  graph = T,
+  corpus = F,
+  users = T,
+  data = T,
+  csv = FALSE,
+  filterdegree = 0,
+  graph_files = FALSE
+)
 }
 \arguments{
 \item{x}{list  Output obtained by channel_analytic}
@@ -31,6 +41,6 @@ Data from  \code{channel_analytic} object.
 Export result from  \code{channel_analytic} objects.
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{annotation}

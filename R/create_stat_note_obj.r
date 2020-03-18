@@ -7,7 +7,7 @@
 #' @param  save logical  If a rds file is generated 
 #' @param  fileName character 
 #' @return list Return stat object
-#' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
+#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  match
 #'
 #'

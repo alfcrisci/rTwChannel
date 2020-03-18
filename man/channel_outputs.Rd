@@ -4,8 +4,15 @@
 \alias{channel_outputs}
 \title{channel_outputs}
 \usage{
-channel_outputs(stat_obj, param = "channel_stat", suffix_file = "LIG",
-  na_string = "", filecsv = FALSE, html = FALSE, excel = TRUE)
+channel_outputs(
+  stat_obj,
+  param = "channel_stat",
+  suffix_file = "LIG",
+  na_string = "",
+  filecsv = FALSE,
+  html = FALSE,
+  excel = TRUE
+)
 }
 \arguments{
 \item{stat_obj}{list  output obtained by channel_analytic}
@@ -29,6 +36,6 @@ Object extracted from the list of output given by \code{channel_analytic} object
 Export result from statistical of \code{channel_analytic} function outputs.
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{annotation}

@@ -4,7 +4,7 @@
 #'
 #' @param  sdata  character  char vector
 #' @return Return text  merged in one element.
-#' @author  Istituto di Biometeorologia Firenze Italy  Alfonso crisci \email{a.crisci@@ibimet.cnr.it}
+#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords string
 #'
 #'

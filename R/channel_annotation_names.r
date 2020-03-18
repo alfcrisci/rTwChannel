@@ -6,7 +6,7 @@
 #' @param  target  character  Target of annotation ( user,hashtag, geonames or other)
 #' @param  repo  character  Address of repository where annotation key file are hosted.
 #' @return x    data.frame   A data.frame with key and category
-#' @author  Istituto di Biometeorologia Firenze Italy  Alfonso crisci \email{a.crisci@@ibimet.cnr.it}
+#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  names, annotations
 #'
 #'

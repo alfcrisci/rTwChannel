@@ -4,9 +4,12 @@
 \alias{retrieve_annotation_df}
 \title{retrieve_annotation_df}
 \usage{
-retrieve_annotation_df(channel = "allertameteoLIG", category = "emergency",
+retrieve_annotation_df(
+  channel = "allertameteoLIG",
+  category = "emergency",
   target = "hashtag",
-  repo = "https://raw.github.com/alfcrisci/twchannels_notations/master/")
+  repo = "https://raw.github.com/alfcrisci/twchannels_notations/master/"
+)
 }
 \arguments{
 \item{channel}{character  Name of channel in repository}
@@ -24,6 +27,6 @@ x    data.frame   A data.frame with key and category
 Retrieve the dataframe of annotations from a github public repository related to annotation regarding the channel.
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{match}

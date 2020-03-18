@@ -46,7 +46,7 @@
 #' @return Nfavor_native Numeric Number of original tweets favorite.
 #' @return N_geo Numeric Number of Geolocated tweets.
 #'
-#' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
+#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  channel,daily stats
 #'
 #'
