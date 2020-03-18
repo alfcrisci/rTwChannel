@@ -4,7 +4,7 @@
 #'
 #' @param  x   Character  Text  of tweet
 #' @return     Return Text of tweet without head.
-#' @author  Istituto di Biometeorologia Firenze Italy  Alfonso crisci \email{a.crisci@@ibimet.cnr.it}
+#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  retweet
 #'
 #'

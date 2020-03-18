@@ -10,12 +10,12 @@
 #' @param  html logical export html sjPlot files.
 #' @param  excel logical export excel files.
 #' @return Object extracted from the list of output given by \code{channel_analytic} object.
-#' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
+#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  annotation
 #'
 #'
 #' @importFrom XLConnect writeWorksheetToFile
-#' @importFrom sjPlot sjt.df
+#' @importFrom sjPlot tab_df
 #' @export
 #'
 #'
@@ -62,7 +62,7 @@ channel_outputs=function(stat_obj, param="channel_stat", suffix_file="LIG", na_s
   
   if ( html == TRUE) {
     
-    sjt.df(res,stringVariable = param,describe=FALSE,alternateRowColors = TRUE,file=paste0(param,"_",suffix_file,".html"))
+    tab_df(res,stringVariable = param,describe=FALSE,alternateRowColors = TRUE,file=paste0(param,"_",suffix_file,".html"))
     
   }
   

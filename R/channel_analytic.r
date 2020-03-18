@@ -44,8 +44,8 @@
 #' @return word_freq_matr qdap wfm object : Word frequency matrix.
 #' @return account_stats data.frame : Statistic account's activity by date.
 #'
-#' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
-#' @keywords  channel,stats
+#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
+#' @keywords  channel stats
 #'
 #'
 #' @importFrom igraph graph.edgelist simplify

@@ -3,12 +3,11 @@ Type: Package
 Title: Twitter channel stream analitics
 Version: 0.2
 Date: 2016-08-04
-Author: Alfonso Crisci <a.crisci@ibimet.cnr.it>, Valentina Grasso
-    <v.grasso@ibimet.cnr.it>
-Maintainer: Alfonso Crisci <a.crisci@ibimet.cnr.it>
-Description: This package performs analitics on Twitter datastreams obtained by
-    a structured query by using Twitter search/streaming API. The form of data are
-    frames of data where significant elements of tweets are reported.
+Author: Alfonso Crisci <alfonso.crisci@ibe.cnr.it>, Valentina Grasso
+    <valentina.grasso@ibe.cnr.it>
+Maintainer: Alfonso Crisci <alfonso.crisci@ibe.cnr.it>
+Description: This package performs basic analitics on Twitter datastreams obtained by
+    a textual query by using Twitter search/streaming API.
 Imports:
     curl,
     qdap,

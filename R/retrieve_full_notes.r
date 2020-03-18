@@ -8,7 +8,7 @@
 #' @param  save  logical  Save the files in rds format
 #' @param  filerds  character  Name of file of rds
 #' @return Return a qdap hash keylist  with key and category
-#' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
+#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  annotation
 #'
 #'

@@ -5,7 +5,7 @@
 #' @param  x  character  Vector of word to compute statistics of notes
 #' @param  notes  qdap hash object  Vector of annotation category
 #' @return A list of statistics for each category of annotation present in notes.
-#' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
+#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  annotation
 #'
 #'
@@ -16,7 +16,7 @@
 
 stat_notes=function (x, notes) 
 {
-     options(warn = -1)
+    options(warn = -1)
     x[,2] = tolower(x[,2])
     x[,2] = gsub("^@", "", x[, 2])
     label_notes = notes$y[1]

@@ -4,7 +4,7 @@
 #'
 #' @param  x   Character  Messages of channel's tweets
 #' @return    A vector of retweted users
-#' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
+#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  user, retweet
 #'
 #' @references  qdapRegex R packages

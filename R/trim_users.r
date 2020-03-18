@@ -4,7 +4,7 @@
 #'
 #' @param  x   Character  Message of tweet
 #' @return     Return the message of tweet without mentions.
-#' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
+#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  retweet
 #'
 #'

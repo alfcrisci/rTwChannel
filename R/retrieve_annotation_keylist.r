@@ -7,7 +7,7 @@
 #' @param  target  character  Target of annotation ( user,hashtag, geonames or other)
 #' @param  repo  character  Address of repository where annotation key file are hosted.
 #' @return hash_temp  data.frame   A qdap keylist object with key and category
-#' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
+#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  match
 #'
 #'

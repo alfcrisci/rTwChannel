@@ -5,7 +5,7 @@
 #' @param  x  character  vector.
 #' @param  pattern  Pattern to be searched.
 #' @return Return a vector with pattern frequency
-#' @author  Istituto di Biometeorologia Firenze Italy  Alfonso crisci \email{a.crisci@@ibimet.cnr.it}
+#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  match
 #'
 #'
